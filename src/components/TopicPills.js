@@ -7,8 +7,9 @@ export default class TopicPills extends React.Component {
         const pathname = window.location.pathname
         const paths = pathname.split('/')
         const courseId = paths[2]
-        const lessonId = paths[3]
-        const topicId = paths[4]
+        const moduleId = paths[3]
+        const lessonId = paths[4]
+        const topicId = paths[5]
         console.log(courseId)
         super(props);
         this.lessons = props.topics
@@ -46,14 +47,6 @@ export default class TopicPills extends React.Component {
                                   key={module.id}/>
                       )
                   }
-                  <li className="list-group-item">
-                      <input
-                          onChange={this.titleChanged}
-                          className="form-control"/>
-                      <button onClick={this.createLesson} className="btn btn-primary btn-block">
-                          Add Lesson
-                      </button>
-                  </li>
               </ul>
           </div>
       )

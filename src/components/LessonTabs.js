@@ -1,4 +1,5 @@
 import React from 'react'
+import '../../node_modules/font-awesome/css/font-awesome.min.css';
 import ModuleItem from "./ModuleItem";
 import Lesson from "./Lesson";
 
@@ -58,14 +59,15 @@ export default class LessonTabs extends React.Component {
                                     key={module.id}/>
                         )
                     }
-                    <li className="list-group-item">
+                    <li >
+                        <div>
                         <input
                             onChange={this.titleChanged}
                             defaultValue={this.state.lesson.title}
                             className="form-control"/>
-                        <button onClick={this.createLesson} className="btn btn-primary btn-block">
-                            Add Lesson
+                        <button onClick={this.createLesson} className="fa fa-plus">
                         </button>
+                        </div>
                     </li>
                 </ul>
             </div>

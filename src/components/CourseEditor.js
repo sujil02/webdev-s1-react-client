@@ -18,10 +18,14 @@ export default class CourseEditor
       courseId: courseId,
       course: this.courses.find(course => course.id == courseId),
       moduleId:moduleId,
-      lessonId:lessonId
-     // modules: course.find(modules => modules.id==moduleId)
+      lessonId:lessonId,
+
     }
 
+  }
+  findModule = (moduleId)=>{
+    let mod = this.state.course.modules.find(modules => modules.id == moduleId)
+  return mod;
   }
   render() {
     return(
@@ -33,10 +37,10 @@ export default class CourseEditor
             </div>
             <div className="col-8 right">
               <LessonTabs courseId={this.state.courseId} lessonId={this.state.moduleId}
-                          lessons={this.state.course.modules[this.props.match.params.moduleId].lessons}/>
+                          lessons={this.findModule(this.state.moduleId).lessons}/>
               <br/>
               <TopicPills courseId={this.state.courseId} lessonId={this.state.moduleId}
-                          topics={this.state.course.modules[this.props.match.params.moduleId].lessons}/>
+                          topics={this.findModule(this.state.moduleId).lessons}/>
             </div>
           </div>
         </div>
