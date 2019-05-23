@@ -8,6 +8,7 @@ export default class LessonTabs extends React.Component {
         const pathname = window.location.pathname
         const paths = pathname.split('/')
         const courseId = paths[2]
+        const moduleId = paths[3]
         console.log(courseId)
         super(props);
         console.log('deleteModule ' +  props.modules)
@@ -15,7 +16,9 @@ export default class LessonTabs extends React.Component {
             lesson: {
                 id: -1,
                 title: 'New Lesson'
+
             },
+            moduleId: moduleId,
             modules: props.modules,
             courseId: props.courseId,
             lessons: props.lessons
@@ -43,18 +46,18 @@ export default class LessonTabs extends React.Component {
             modules: this.state.modules.filter(module => module.id !== id)
         })
     }
-
     render() {
         return(
             <div>
                 <h3>Lesson Tabs</h3>
                 <ul className="nav nav-pills">
                     {
-                        this.state.lessons.map(
+                        this.props.lessons.map(
                             lesson =>
                                 <Lesson
-                                    courseId={this.state.courseId}
+                                    courseId={this.props.courseId}
                                     deleteModule={this.deleteModule}
+                                    moduleId = {this.props.moduleId}
                                     lesson={lesson}
                                     key={module.id}/>
                         )

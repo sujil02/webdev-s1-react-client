@@ -57,7 +57,7 @@ export default class ModuleList
               </button>
             </li>
             {
-              this.state.modules.map(
+              this.props.modules.map(
                   module =>
                       <ModuleItem
                           courseId={this.state.courseId}

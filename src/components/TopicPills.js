@@ -25,20 +25,12 @@ export default class TopicPills extends React.Component {
 
         }
     }
-  render() {
+  render(lessonId) {
       return(
           <div>
-
-              <div>
-
-              </div>
-              <h3>Topic Tabs</h3>
               <ul className="nav nav-pills">
-                  {/*{this.state.topics.map((e, i) =>*/}
-                  {/*    <Topic key={i} topic={e.title} />*/}
-                  {/*)}*/}
                   {
-                      this.state.lesson.topics.map(
+                      this.props.lesson.topics.map(
                           topic =>
                               <Topic
                                   courseId={this.state.courseId}
