@@ -14,20 +14,23 @@ export default class Whiteboard extends React.Component {
         <Router>
           <div className="container">
             <h1>WhiteBoard</h1>
-            <Link to="/omdb">Omdb</Link> |
-            <Link to="/course-list">List</Link> |
-            <Link to="/course-grid">Grid</Link> |
-            <Link to="/course-editor">Editor</Link>
+            <Link to="/course-list">List -</Link>-
+            <Link to="/course-grid">- Grid -</Link>-
+            <Link to="/course-editor">- Editor</Link>
 
             <Route
-                path="/course-grid"
+                exact path="/course-grid"
                 render={() => <CourseGrid courses={courses}/>}/>
             <Route
                 path="/course-list"
                 render={() => <CourseList courses={courses}/>}/>
             <Route
-                path="/course-editor/:courseId"
+                path="/course-editor/:courseId/:moduleId/:lessonId"
+                render={(props) => <CourseEditor {...props} courses={courses}/>}/>
+            <Route
+                exact path="/course-editor/:courseId"
                 render={props => <CourseEditor courses={courses}/>}/>
+
           </div>
         </Router>
     )

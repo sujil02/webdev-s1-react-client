@@ -10,7 +10,8 @@ export default class ModuleList
         id: -1,
         title: 'New Module'
       },
-      modules: this.props.modules
+      modules: props.modules,
+      courseId: props.courseId
       //     [
       //     {id: 123, title: 'Organic Chemistry'},
       //     {id: 234, title: 'Economics 101'},
@@ -59,6 +60,7 @@ export default class ModuleList
               this.state.modules.map(
                   module =>
                       <ModuleItem
+                          courseId={this.state.courseId}
                           deleteModule={this.deleteModule}
                           module={module}
                           key={module.id}/>

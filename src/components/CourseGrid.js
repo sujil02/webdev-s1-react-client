@@ -4,7 +4,7 @@ import CourseCard from './CourseCard'
 const CourseGrid = ({courses}) =>
     <div>
       <h1>Course Grid</h1>
-      <div class="card-group">
+      <div className="card-group">
         {
           courses.map((course) =>
               <CourseCard course={course}
