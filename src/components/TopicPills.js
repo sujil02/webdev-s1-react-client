@@ -100,9 +100,7 @@ export default class TopicPills extends React.Component {
                       </div>
                   </li>
               </ul>
-              <div className="widgetTabCss">
                   {this.renderWidget()}
-              </div>
           </div>
       )
   }
@@ -110,7 +108,9 @@ export default class TopicPills extends React.Component {
     renderWidget =() =>{
         if(this.state.widgetId){
             return (
+                <div className="widgetTabCss">
                 <Widget/>
+                </div>
             )
         }
     }
