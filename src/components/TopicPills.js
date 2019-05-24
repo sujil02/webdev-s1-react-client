@@ -11,7 +11,6 @@ export default class TopicPills extends React.Component {
         const moduleId = paths[3]
         const lessonId = paths[4]
         const topicId = paths[5]
-        console.log(courseId)
         super(props);
         this.lessons = props.lessons
         this.state = {

@@ -11,9 +11,7 @@ export default class LessonTabs extends React.Component {
         const paths = pathname.split('/')
         const courseId = paths[2]
         const moduleId = paths[3]
-        console.log(courseId)
         super(props);
-        console.log('deleteModule ' +  props.modules)
         this.state = {
             lesson: {
                 id: -1,
@@ -54,7 +52,6 @@ export default class LessonTabs extends React.Component {
         this.state.course = courseService.findAllCourses().find(course => course.id == this.courseId)
         this.state.modules = this.findModule(this.state.moduleId)
         this.state.lessons = this.findLesson(this.state.moduleId, this.state.lessonId)
-        console.log(this.moduleId)
     }
     titleChanged = (event) => {
         console.log(event.target.value)

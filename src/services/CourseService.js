@@ -122,7 +122,9 @@ export default class CourseService {
         let module = course.modules.filter(module => module.id !== moduleId)
         return module
     }
-
+    deleteCourse = (courses) =>{
+        this.courses=courses
+    }
     deleteLesson = (courseId, moduleId, lessonId,lesson) =>{
         let index1
         let course
@@ -149,6 +151,18 @@ export default class CourseService {
         let l = module.lessons.find(lesson => lesson.id == lessonId)
         l.topics =topics
         return course
+    }
+    updateCourse = (courseId,title) =>{
+        let index1
+        let course
+        this.courses.forEach(function (c,index){
+            if(c.id == courseId){
+                index1 =index
+                course = c
+            }
+        })
+        course.title = title
+        return courses;
     }
 
     updateModule = (courseId, moduleId,title) =>{

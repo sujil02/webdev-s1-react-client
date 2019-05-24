@@ -1,7 +1,7 @@
 import React from 'react'
 import {Link} from "react-router-dom";
 
-const CourseRow = ({course,deleteCourse}) =>
+const CourseRow = ({course,updateCourse,deleteCourse}) =>
 
         <tr>
         <td className="d-block-inline">
@@ -12,7 +12,7 @@ const CourseRow = ({course,deleteCourse}) =>
         <td className="d-none d-md-inline-block">Petey Cruiser</td>
         <td className="d-none d-md-inline-block">6.55 am</td>
         <td>
-            <button onClick={() => deleteCourse(course)}
+            <button onClick={() => updateCourse(course)}
                     className="btn btn-primary float-left">Update</button>
             <button onClick={() => deleteCourse(course)}
                     className="btn btn-danger float-right">Delete</button>

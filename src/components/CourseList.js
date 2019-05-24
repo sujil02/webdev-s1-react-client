@@ -42,6 +42,12 @@ export default class CourseList
         })
         courseService.deleteCourse(this.state.courses.filter(course => course.id !== id.id))
     }
+    updateCourse = (course) => {
+        this.setState({
+            courses: courseService.updateCourse(course.id,  window.prompt())
+        })
+
+    }
     render() {
         return(
                 <div className="main">
@@ -77,6 +83,8 @@ export default class CourseList
                                     <CourseRow
                                         course={course}
                                         deleteCourse={this.deleteCourse}
+                                        updateCourse={this.updateCourse}
+                                        key={course.id}
                                     />
                                 )
                             }

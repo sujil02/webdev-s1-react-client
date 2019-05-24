@@ -17,7 +17,6 @@ export default class CourseEditor
     const moduleId = paths[3]
     const lessonId = paths[4]
     const topicId = paths[5]
-    console.log(courseId)
     this.courses = props.courses
     this.state = {
       courseId: courseId,
@@ -46,7 +45,6 @@ export default class CourseEditor
     this.state.lessonId = paths[4]
     this.state.topicId = paths[5]
     this.state.course = courseService.findAllCourses().find(course => course.id == this.courseId)
-    console.log(this.moduleId)
   }
 
   render() {
@@ -54,9 +52,10 @@ export default class CourseEditor
 
         <div className="container">
           {this.componentUpdate()}
-          <h2>Course Name - {this.state.course.title} Course Id - {this.state.course.id}</h2>
+          <h2>Course Name - {this.state.course.title}</h2>
+          <h2>Course ID - {this.state.course.id}</h2>
           <div className="row">
-            <div className="col-4 left">
+            <div className="col-4 left moduleTabCss">
               <ModuleList courseId={this.state.courseId} modules={this.state.course.modules}/>
             </div>
             <div className="col-8 right">
