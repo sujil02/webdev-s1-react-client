@@ -49,8 +49,10 @@ export default class LessonTabs extends React.Component {
     render() {
         return(
             <div>
+            if(this.props.lessons)
+            <div>
                 <h3>Lesson Tabs</h3>
-                <ul className="nav nav-pills">
+                <ul className="nav nav-tabs">
                     {
                         this.props.lessons.map(
                             lesson =>
@@ -73,6 +75,7 @@ export default class LessonTabs extends React.Component {
                         </div>
                     </li>
                 </ul>
+            </div>
             </div>
         )
     }

@@ -25,7 +25,7 @@ export default class TopicPills extends React.Component {
 
         }
     }
-  render(lessonId) {
+  render() {
       return(
           <div>
               <ul className="nav nav-pills">

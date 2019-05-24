@@ -18,4 +18,19 @@ export default class CourseService {
         return this.courses;
     }
 
+    addModule = (courseId, module) =>{
+        let index1
+        let course
+        this.courses.forEach(function (c,index){
+            if(c.id == courseId){
+                index1 =index
+                course = c
+            }
+        })
+        const myArrayString = JSON.stringify(course.modules)
+        let m = JSON.parse(myArrayString)
+            m.push(module)
+        this.courses[index1].modules=m;
+    }
+
 }

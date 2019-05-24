@@ -1,14 +1,18 @@
 import React from 'react'
 import ModuleItem from './ModuleItem'
-
+import CourseService from "../services/CourseService";
+let courseService =
+    CourseService.getInstance();
 export default class ModuleList
     extends React.Component {
   constructor(props) {
     super(props);
+
     this.state = {
       module: {
         id: -1,
-        title: 'New Module'
+        title: 'New Module',
+        lessons:[]
       },
       modules: props.modules,
       courseId: props.courseId
@@ -25,6 +29,7 @@ export default class ModuleList
     this.setState({
       modules: [this.state.module, ...this.state.modules]
     })
+    courseService.addModule(this.state.courseId, this.state.module)
   }
   titleChanged = (event) => {
     console.log(event.target.value)
@@ -57,7 +62,7 @@ export default class ModuleList
               </button>
             </li>
             {
-              this.props.modules.map(
+              this.state.modules.map(
                   module =>
                       <ModuleItem
                           courseId={this.state.courseId}
