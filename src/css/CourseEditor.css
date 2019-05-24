@@ -1,20 +1,24 @@
 .moduleTabCss{
+    border-radius: 25px;
     background: lightpink;
     padding: 20px;
 }
 .lessonTabCss{
+    border-radius: 25px;
     margin: 20px;
     background: lightgreen;
     padding: 20px;
 }
 
 .topicTabCss{
+    border-radius: 25px;
     margin: 40px;
     background: lightcyan;
     padding: 50px;
 }
 
 .widgetTabCss{
+    border-radius: 25px;
     margin: 50px;
     background: lightsalmon;
     padding: 50px;

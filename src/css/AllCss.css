@@ -14,7 +14,7 @@
 }
 .course-manger-tag{
     padding-left: 60px;
-    background: dodgerblue;
+    background: lightgreen;
 }
 .circle{
     color: white;
@@ -39,4 +39,13 @@
 h2{
     color: darkgreen;
     padding: 10px;
+}
+h1{
+    border-radius: 25px;
+    color: darkred;
+    background: lightyellow;
+    padding: 10px;
+}
+.reorderIconCSS{
+    margin: 5px;
 }

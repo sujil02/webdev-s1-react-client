@@ -2,7 +2,7 @@ import React from 'react'
 import CourseRow from '../components/CourseRow'
 import CourseService from "../services/CourseService";
 import '../css/AllCss.css'
-
+import {Link} from "react-router-dom";
 let courseService =
     CourseService.getInstance();
 export default class CourseTable
@@ -74,7 +74,9 @@ export default class CourseTable
                                 <th>Title</th>
                                 <th className="d-none d-md-inline-block">Owned By</th>
                                 <th className="d-none d-md-inline-block">Last modified by me</th>
-                                <th>Modify</th>
+                                <th>
+                                    <Link className="fa fa-reorder float-left reorderIconCSS" to={'/course-grid'}></Link>
+                                    Modify</th>
                             </tr>
                             </thead>
                             <tbody className="wbdv-tbody">

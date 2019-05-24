@@ -25,7 +25,6 @@ export default class Whiteboard extends React.Component {
           <div className="container">
             <div className="whiteBoardHeader">
               <h1>WhiteBoard</h1>
-            </div>
             <div className="linksCss">
             <Link to="/course-list">List -</Link>-
             <Link to="/course-grid">- Grid -</Link>-
@@ -48,6 +47,8 @@ export default class Whiteboard extends React.Component {
                 render={props => <CourseEditor courses={this.courses}/>}/>
           </div>
           </div>
+          </div>
+
         </Router>
     )
   }
