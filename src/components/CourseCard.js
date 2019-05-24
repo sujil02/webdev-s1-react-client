@@ -9,7 +9,7 @@ const CourseCard = ({deleteCourse,course}) =>
                 <h5 className="card-title"> {course.title}</h5>
                 <p className="card-text">Card text.</p>
             </div>
-                <Link className=" btn btn-primary float-right" to={`/course-editor/${course.id}/`}>
+                <Link className=" btn btn-primary float-right" to={`/course-editor/${course.id}/dummy`}>
                     More..
                 </Link>
                 <button onClick={() => deleteCourse(course.id)}

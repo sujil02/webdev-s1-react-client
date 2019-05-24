@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 const CourseRow = ({course,updateCourse,deleteCourse}) =>
     <tr>
         <td className="d-block-inline">
-            <Link className="nav-link" to={`/course-editor/${course.id}/`}>
+            <Link className="nav-link" to={`/course-editor/${course.id}/dummy`}>
                 {course.title}
             </Link>
         </td>

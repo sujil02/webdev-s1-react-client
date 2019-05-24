@@ -88,6 +88,7 @@ export default class LessonTabs extends React.Component {
                                     deleteLesson={this.deleteLesson}
                                     updateLesson={this.updateLesson}
                                     moduleId = {this.props.moduleId}
+                                    lessonId={this.state.lessonId}
                                     lesson={lesson}
                                     key={lesson.id}/>
                         )

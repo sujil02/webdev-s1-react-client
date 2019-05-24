@@ -18,6 +18,23 @@ export default class CourseGrid
             courses : props.courses
         }
     }
+    titleChanged = (event) => {
+        console.log(event.target.value)
+        this.setState({
+            course: {
+                title: event.target.value,
+                id: (new Date()).getTime(),
+                modules: []
+            }
+        })
+    }
+    createCourse = () => {
+        this.state.course.id = (new Date()).getTime()
+        this.setState({
+            courses: [this.state.course, ...this.state.courses]
+        })
+        courseService.addCourse(this.state.course)
+    }
     deleteCourse = (id) => {
         this.setState({
             courses: this.state.courses.filter(course => course.id !== id)

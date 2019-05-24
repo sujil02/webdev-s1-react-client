@@ -6,6 +6,10 @@ let courseService =
 export default class ModuleList
     extends React.Component {
   constructor(props) {
+    const pathname = window.location.pathname
+    const paths = pathname.split('/')
+    const courseId = paths[2]
+    const moduleId = paths[3]
     super(props);
     this.state = {
       module: {
@@ -14,6 +18,7 @@ export default class ModuleList
         lessons:[]
       },
       modules: props.modules,
+      moduleId:this.moduleId,
       courseId: props.courseId
     }
   }
@@ -46,10 +51,17 @@ export default class ModuleList
       modules : courseService.updateModule(this.state.courseId, id, title)
     })
   }
+  componentUpdate =()=> {
+      const pathname = window.location.pathname
+      const paths = pathname.split('/')
+      this.state.moduleId = paths[3]
+  }
+
   render() {
     return(
         <div className="container">
           <h3>Module List</h3>
+          {this.componentUpdate()}
           <ul className="list-group">
             <li className="list-group-item">
               <input
@@ -67,6 +79,7 @@ export default class ModuleList
                           courseId={this.state.courseId}
                           deleteModule={this.deleteModule}
                           updateModule={this.updateModule}
+                          moduleId={this.state.moduleId}
                           module={module}
                           key={module.id}/>
               )

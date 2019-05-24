@@ -13,6 +13,8 @@
     background: antiquewhite;
 }
 .course-manger-tag{
+    margin: 5px;
+    border-radius: 10px;
     padding-left: 60px;
     background: lightgreen;
 }
@@ -24,7 +26,9 @@
     width: 30px;
     height: 30px;
 }
-
+.active {
+    background: yellow;
+}
 .mid-pad{
     padding-left: 50px;
 }

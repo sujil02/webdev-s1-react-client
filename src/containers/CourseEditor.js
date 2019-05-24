@@ -56,7 +56,7 @@ export default class CourseEditor
           <h2>Course ID - {this.state.course.id}</h2>
           <div className="row">
             <div className="col-4 left moduleTabCss">
-              <ModuleList courseId={this.state.courseId} modules={this.state.course.modules}/>
+              {this.renderModules()}
             </div>
             <div className="col-8 right">
               <div className="lessonTabCss">
@@ -70,7 +70,13 @@ export default class CourseEditor
         </div>
     )
   }
-
+  renderModules =() =>{
+    if(this.state.moduleId){
+      return (
+          <ModuleList courseId={this.state.courseId} modules={this.state.course.modules}/>
+      )
+    }
+  }
   renderLessons =() =>{
     if(this.state.lessonId){
       return (

@@ -84,6 +84,7 @@ export default class TopicPills extends React.Component {
                                   courseId={this.state.courseId}
                                   moduleId={this.state.moduleId}
                                   lessonId={this.state.lessonId}
+                                  topicId={this.state.topicId}
                                   deleteTopic={this.deleteTopic}
                                   updateTopic={this.updateTopic}
                                   topic={topic}
