@@ -52,7 +52,14 @@ export default class TopicPills extends React.Component {
         this.setState({
             topics: this.state.lesson.topics.filter(topic => topic.id !== topicId)
         })
-        courseService.deleteTopic(courseId,moduleId,lessonId,   this.state.lesson.topics.filter(topics => topics.id != topicId))
+        courseService.deleteTopic(courseId,moduleId,lessonId,
+            this.state.lesson.topics.filter(topics => topics.id != topicId))
+    }
+    updateTopic = (courseId, moduleId, lessonId,topicId) => {
+        this.setState({
+            topics: courseService.updateTopic(courseId,moduleId,lessonId, topicId,
+                window.prompt("Please enter new Title"))
+        })
     }
     componentUpdate =()=> {
         const pathname = window.location.pathname
@@ -76,6 +83,7 @@ export default class TopicPills extends React.Component {
                                   moduleId={this.state.moduleId}
                                   lessonId={this.state.lessonId}
                                   deleteTopic={this.deleteTopic}
+                                  updateTopic={this.updateTopic}
                                   topic={topic}
                                   key={topic.id}/>
                       )

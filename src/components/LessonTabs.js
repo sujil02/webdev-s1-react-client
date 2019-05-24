@@ -71,6 +71,11 @@ export default class LessonTabs extends React.Component {
         })
         courseService.deleteLesson(courseId,moduleId,id,  this.state.modules.lessons.filter(lesson => lesson.id !== id))
     }
+    updateLesson = (courseId,moduleId,id) => {
+        this.setState({
+            lessons: courseService.updateLesson(courseId,moduleId,id,  window.prompt())
+        })
+    }
     render() {
         return(
             <div>
@@ -83,6 +88,7 @@ export default class LessonTabs extends React.Component {
                                 <Lesson
                                     courseId={this.props.courseId}
                                     deleteLesson={this.deleteLesson}
+                                    updateLesson={this.updateLesson}
                                     moduleId = {this.props.moduleId}
                                     lesson={lesson}
                                     key={lesson.id}/>

@@ -34,13 +34,15 @@ export default class ModuleList
     })
   }
   deleteModule = (id) => {
-    console.log('deleteModule ' + id)
     this.setState({
       modules: this.state.modules.filter(module => module.id !== id)
     })
     courseService.deleteModule(this.state.courseId,id)
   }
-
+  updateModule = (id) => {
+    let title=window.prompt();
+    courseService.updateModule(this.state.courseId,id,title)
+  }
   render() {
     return(
         <div className="container">
@@ -61,6 +63,7 @@ export default class ModuleList
                       <ModuleItem
                           courseId={this.state.courseId}
                           deleteModule={this.deleteModule}
+                          updateModule={this.updateModule}
                           module={module}
                           key={module.id}/>
               )

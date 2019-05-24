@@ -1,7 +1,7 @@
 import React from 'react'
 import {Link} from "react-router-dom";
 
-const Topic = ({courseId, moduleId, lessonId, topic, deleteTopic}) =>
+const Topic = ({courseId, moduleId, lessonId, topic, updateTopic, deleteTopic}) =>
 
 
     <div>
@@ -10,6 +10,8 @@ const Topic = ({courseId, moduleId, lessonId, topic, deleteTopic}) =>
                 <Link className="nav-link" to={`/course-editor/${courseId}/${moduleId}/${lessonId}/${topic.id}`}>
                     {topic.title}
                 </Link>
+            <button onClick={() => updateTopic(courseId, moduleId, lessonId,topic.id)}
+                    className="fa fa-pencil float-right"></button>
                 <button onClick={() => deleteTopic(courseId, moduleId, lessonId,topic.id)}
                         className="fa fa-trash float-right"></button>
 

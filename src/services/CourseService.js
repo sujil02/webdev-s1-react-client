@@ -150,4 +150,49 @@ export default class CourseService {
         l.topics =topics
         return course
     }
+
+    updateModule = (courseId, moduleId,title) =>{
+        let index1
+        let course
+        this.courses.forEach(function (c,index){
+            if(c.id == courseId){
+                index1 =index
+                course = c
+            }
+        })
+        let module = course.modules.find(module => module.id == moduleId)
+        module.title = title
+        return module;
+    }
+
+    updateLesson = (courseId, moduleId, lessonId,title) =>{
+        let index1
+        let course
+        this.courses.forEach(function (c,index){
+            if(c.id == courseId){
+                index1 =index
+                course = c
+            }
+        })
+        let module = course.modules.find(module => module.id == moduleId)
+        let l = module.lessons.find(lesson => lesson.id == lessonId)
+        l.title = title
+        return module.lessons
+    }
+
+    updateTopic = (courseId, moduleId, lessonId, topicId, title) =>{
+        let index1
+        let course
+        this.courses.forEach(function (c,index){
+            if(c.id == courseId){
+                index1 =index
+                course = c
+            }
+        })
+        let module = course.modules.find(module => module.id == moduleId)
+        let l = module.lessons.find(lesson => lesson.id == lessonId)
+        let t = l.topics.find(topic => topic.id==topicId)
+        t.title = title
+        return l.topics
+    }
 }
