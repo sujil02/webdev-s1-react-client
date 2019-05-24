@@ -1,6 +1,8 @@
 import React from 'react'
 import Topic from "./Topic";
 import CourseService from "../services/CourseService";
+import Widget from "./Widget";
+import './css/AllCss.css'
 let courseService =
     CourseService.getInstance();
 export default class TopicPills extends React.Component {
@@ -67,6 +69,7 @@ export default class TopicPills extends React.Component {
         this.state.moduleId = paths[3]
         this.state.lessonId = paths[4]
         this.state.topicId = paths[5]
+        this.state.widgetId = paths[6]
         this.state.lesson = courseService.findLesson(this.state.courseId,this.state.moduleId, this.state.lessonId)
     }
   render() {
@@ -87,19 +90,28 @@ export default class TopicPills extends React.Component {
                                   key={topic.id}/>
                       )
                   }
-
                   <li >
                       <div>
                           <input
                               onChange={this.titleChanged}
                               defaultValue={this.state.topic.title}
                               className="form-control"/>
-                          <button onClick={this.createTopic} className="fa fa-plus">
-                          </button>
+                          <button onClick={this.createTopic} className="fa fa-plus"/>
                       </div>
                   </li>
               </ul>
+              <div className="widgetTabCss">
+                  {this.renderWidget()}
+              </div>
           </div>
       )
   }
+
+    renderWidget =() =>{
+        if(this.state.widgetId){
+            return (
+                <Widget/>
+            )
+        }
+    }
 }

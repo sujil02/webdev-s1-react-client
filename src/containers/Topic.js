@@ -7,7 +7,7 @@ const Topic = ({courseId, moduleId, lessonId, topic, updateTopic, deleteTopic}) 
     <div>
         <li className="nav-item">
 
-                <Link className="nav-link" to={`/course-editor/${courseId}/${moduleId}/${lessonId}/${topic.id}`}>
+                <Link className="nav-link" to={`/course-editor/${courseId}/${moduleId}/${lessonId}/${topic.id}/w1`}>
                     {topic.title}
                 </Link>
             <button onClick={() => updateTopic(courseId, moduleId, lessonId,topic.id)}

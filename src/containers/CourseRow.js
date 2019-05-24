@@ -2,8 +2,7 @@ import React from 'react'
 import {Link} from "react-router-dom";
 
 const CourseRow = ({course,updateCourse,deleteCourse}) =>
-
-        <tr>
+    <tr>
         <td className="d-block-inline">
             <Link className="nav-link" to={`/course-editor/${course.id}/`}>
                 {course.title}
@@ -18,10 +17,4 @@ const CourseRow = ({course,updateCourse,deleteCourse}) =>
                     className="btn btn-danger float-right">Delete</button>
         </td>
     </tr>
-    {/*<a href="#" className="list-group-item">*/}
-    {/*  {course.title}*/}
-    {/*  <button className="btn btn-danger float-right">Delete</button>*/}
-    {/*</a>*/}
-
-
 export default CourseRow;

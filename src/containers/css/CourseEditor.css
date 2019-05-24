@@ -3,11 +3,19 @@
     padding: 20px;
 }
 .lessonTabCss{
+    margin: 20px;
     background: lightgreen;
     padding: 20px;
 }
 
 .topicTabCss{
+    margin: 40px;
     background: lightcyan;
+    padding: 50px;
+}
+
+.widgetTabCss{
+    margin: 50px;
+    background: lightsalmon;
     padding: 50px;
 }
