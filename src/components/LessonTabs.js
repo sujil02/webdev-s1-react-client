@@ -34,33 +34,54 @@ export default class LessonTabs extends React.Component {
         })
 
     }
-
+    findLesson = (moduleId, lessonId) => {
+        let mod = this.state.course.modules.find(modules => modules.id == moduleId)
+        let lesson = mod.lessons.find(lesson=>lesson.id == lessonId);
+        return lesson;
+    }
+    findModule = (moduleId)=>{
+        let mod = this.state.course.modules.find(modules => modules.id == moduleId)
+        return mod;
+    }
+    componentUpdate =()=> {
+        const pathname = window.location.pathname
+        const paths = pathname.split('/')
+        this.courseId = paths[2]
+        this.state.moduleId = paths[3]
+        this.state.lessonId = paths[4]
+        this.state.topicId = paths[5]
+        this.state.course = courseService.findAllCourses().find(course => course.id == this.courseId)
+        this.state.modules = this.findModule(this.state.moduleId)
+        this.state.lessons = this.findLesson(this.state.moduleId, this.state.lessonId)
+        console.log(this.moduleId)
+    }
     titleChanged = (event) => {
         console.log(event.target.value)
         this.setState({
-            module: {
+            lesson: {
                 title: event.target.value,
                 id: (new Date()).getTime()
             }
         })
     }
-    deleteModule = (id) => {
-        console.log('deleteModule ' + id)
+    deleteLesson = (courseId,moduleId,id) => {
         this.setState({
-            modules: this.state.modules.filter(module => module.id !== id)
+            lessons: this.state.modules.lessons.filter(lesson => lesson.id !== id)
         })
+        courseService.deleteLesson(courseId,moduleId,id,  this.state.modules.lessons.filter(lesson => lesson.id !== id))
     }
     render() {
         return(
             <div>
+                {this.componentUpdate()}
                 <h3>Lesson Tabs</h3>
                 <ul className="nav nav-tabs">
                     {
-                        this.props.lessons.map(
+                        this.state.modules.lessons.map(
                             lesson =>
                                 <Lesson
                                     courseId={this.props.courseId}
-                                    deleteModule={this.deleteModule}
+                                    deleteLesson={this.deleteLesson}
                                     moduleId = {this.props.moduleId}
                                     lesson={lesson}
                                     key={module.id}/>

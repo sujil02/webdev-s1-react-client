@@ -40,6 +40,7 @@ export default class ModuleList
     this.setState({
       modules: this.state.modules.filter(module => module.id !== id)
     })
+    courseService.deleteModule(this.state.courseId,id)
   }
 
   render() {

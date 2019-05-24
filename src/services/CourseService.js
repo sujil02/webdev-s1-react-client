@@ -56,4 +56,31 @@ export default class CourseService {
         return m;
     }
 
+    deleteModule = (courseId, moduleId) =>{
+        let index1
+        let course
+        this.courses.forEach(function (c,index){
+            if(c.id == courseId){
+                index1 =index
+                course = c
+            }
+        })
+
+        let module = course.modules.filter(module => module.id !== moduleId)
+        return module
+    }
+
+    deleteLesson = (courseId, moduleId, lessonId,lesson) =>{
+        let index1
+        let course
+        this.courses.forEach(function (c,index){
+            if(c.id == courseId){
+                index1 =index
+                course = c
+            }
+        })
+        let module = course.modules.find(module => module.id == moduleId)
+        module.lessons = lesson
+        return course
+    }
 }
