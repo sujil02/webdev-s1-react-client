@@ -176,7 +176,7 @@ export default class CourseService {
         })
         let module = course.modules.find(module => module.id == moduleId)
         module.title = title
-        return module;
+        return course.modules;
     }
 
     updateLesson = (courseId, moduleId, lessonId,title) =>{

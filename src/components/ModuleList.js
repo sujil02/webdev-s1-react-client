@@ -42,7 +42,9 @@ export default class ModuleList
   }
   updateModule = (id) => {
     let title=window.prompt();
-    courseService.updateModule(this.state.courseId,id,title)
+    this.setState({
+      modules : courseService.updateModule(this.state.courseId, id, title)
+    })
   }
   render() {
     return(
