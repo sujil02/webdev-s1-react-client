@@ -16,11 +16,6 @@ export default class ModuleList
       },
       modules: props.modules,
       courseId: props.courseId
-      //     [
-      //     {id: 123, title: 'Organic Chemistry'},
-      //     {id: 234, title: 'Economics 101'},
-      //     {id: 345, title: 'Quantum Physics'}
-      // ]
     }
   }
   createModule = () => {
@@ -62,7 +57,7 @@ export default class ModuleList
               </button>
             </li>
             {
-              this.state.modules.map(
+                this.state.modules.map(
                   module =>
                       <ModuleItem
                           courseId={this.state.courseId}

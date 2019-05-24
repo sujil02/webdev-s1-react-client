@@ -58,13 +58,8 @@ export default class CourseEditor
               <ModuleList courseId={this.state.courseId} modules={this.state.course.modules}/>
             </div>
             <div className="col-8 right">
-
               {this.renderLessons()}
               {this.renderTopics()}
-              {/*<br/>
-              <TopicPills courseId={this.state.courseId} lessonId={this.state.moduleId}
-                          lesson = {this.findLesson(this.state.moduleId,this.state.lessonId)}
-                          topics={this.findModule(this.state.moduleId).lessons}/>*/}
             </div>
           </div>
         </div>

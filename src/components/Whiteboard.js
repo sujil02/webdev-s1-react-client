@@ -24,7 +24,7 @@ export default class Whiteboard extends React.Component {
             <h1>WhiteBoard</h1>
             <Link to="/course-list">List -</Link>-
             <Link to="/course-grid">- Grid -</Link>-
-            <Link to="/course-editor">- Editor</Link>
+            <Link to="/course-editor/123">- Editor</Link>
 
             <Route
                 exact path="/course-grid"

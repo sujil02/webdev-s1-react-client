@@ -2,7 +2,9 @@ import React from 'react'
 import '../../node_modules/font-awesome/css/font-awesome.min.css';
 import ModuleItem from "./ModuleItem";
 import Lesson from "./Lesson";
-
+import CourseService from "../services/CourseService";
+let courseService =
+    CourseService.getInstance();
 export default class LessonTabs extends React.Component {
     constructor(props) {
         const pathname = window.location.pathname
@@ -15,8 +17,8 @@ export default class LessonTabs extends React.Component {
         this.state = {
             lesson: {
                 id: -1,
-                title: 'New Lesson'
-
+                title: 'New Lesson',
+                topics:[]
             },
             moduleId: moduleId,
             modules: props.modules,
@@ -28,9 +30,11 @@ export default class LessonTabs extends React.Component {
         // this.state.module.push()
         this.state.lesson.id = (new Date()).getTime()
         this.setState({
-            lessons: [this.state.lesson, ...this.state.lessons]
+            lessons:  courseService.addLesson(this.props.courseId, this.props.moduleId, this.state.lesson)
         })
+
     }
+
     titleChanged = (event) => {
         console.log(event.target.value)
         this.setState({
@@ -48,8 +52,6 @@ export default class LessonTabs extends React.Component {
     }
     render() {
         return(
-            <div>
-            if(this.props.lessons)
             <div>
                 <h3>Lesson Tabs</h3>
                 <ul className="nav nav-tabs">
@@ -75,7 +77,6 @@ export default class LessonTabs extends React.Component {
                         </div>
                     </li>
                 </ul>
-            </div>
             </div>
         )
     }
