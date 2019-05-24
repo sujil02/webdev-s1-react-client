@@ -149,5 +149,20 @@
     "id": "c9",
     "title": "Course 9",
     "modules": []
+  },
+  {
+    "id": "c10",
+    "title": "Course 10",
+    "modules": []
+  },
+  {
+    "id": "c11",
+    "title": "Course 11",
+    "modules": []
+  },
+  {
+    "id": "c12",
+    "title": "Course 12",
+    "modules": []
   }
 ]

@@ -1,9 +1,8 @@
 import React from 'react'
 import {Link} from "react-router-dom";
+import '../css/CourseCard.css'
 
 const CourseCard = ({deleteCourse,course}) =>
-    <div>
-
             <div className="card">
                 <img className="card-img-top"  src="https://picsum.photos/300/200" alt="Card image cap"/>
             <div className="card-body">
@@ -14,8 +13,6 @@ const CourseCard = ({deleteCourse,course}) =>
                     More..
                 </Link>
                 <button onClick={() => deleteCourse(course.id)}
-                        className="fa fa-trash float-right"></button>
+                        className="btn btn-danger float-left">Delete</button>
             </div>
-    </div>
-
 export default CourseCard
