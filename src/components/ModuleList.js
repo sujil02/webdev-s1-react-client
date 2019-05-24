@@ -29,7 +29,8 @@ export default class ModuleList
     this.setState({
       module: {
         title: event.target.value,
-        id: (new Date()).getTime()
+        id: (new Date()).getTime(),
+        lessons:[]
       }
     })
   }

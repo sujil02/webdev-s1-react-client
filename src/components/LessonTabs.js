@@ -61,7 +61,8 @@ export default class LessonTabs extends React.Component {
         this.setState({
             lesson: {
                 title: event.target.value,
-                id: (new Date()).getTime()
+                id: (new Date()).getTime(),
+                topics:[]
             }
         })
     }
