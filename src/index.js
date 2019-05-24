@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 
 import 'bootstrap/dist/css/bootstrap.min.css'
-import Whiteboard from './containers/Whiteboard'
+import Whiteboard from './components/Whiteboard'
 
 ReactDOM.render(
     <Whiteboard/>,

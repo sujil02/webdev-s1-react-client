@@ -1,11 +1,11 @@
 import React from 'react'
-import CourseRow from './CourseRow'
+import CourseRow from '../components/CourseRow'
 import CourseService from "../services/CourseService";
-import './css/AllCss.css'
+import '../css/AllCss.css'
 
 let courseService =
     CourseService.getInstance();
-export default class CourseList
+export default class CourseTable
     extends React.Component{
     constructor(props) {
         super(props);

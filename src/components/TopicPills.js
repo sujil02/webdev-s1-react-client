@@ -2,7 +2,7 @@ import React from 'react'
 import Topic from "./Topic";
 import CourseService from "../services/CourseService";
 import Widget from "./Widget";
-import './css/AllCss.css'
+import '../css/AllCss.css'
 let courseService =
     CourseService.getInstance();
 export default class TopicPills extends React.Component {
