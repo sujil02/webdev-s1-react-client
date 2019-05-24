@@ -5,7 +5,7 @@ const Lesson = ({courseId, moduleId,lesson, deleteLesson}) =>
 
 <div>
     <li className="nav-item">
-        <div className="navBarCss">
+        <div >
         <Link className="nav-link" to={`/course-editor/${courseId}/${moduleId}/${lesson.id}/t1`}>
             {lesson.title}
         </Link>

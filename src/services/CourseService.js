@@ -31,7 +31,13 @@ export default class CourseService {
         let lesson = module.lessons.find(lesson => lesson.id == lessonId)
         return lesson
     }
-
+    addCourse = (course) =>{
+        const myArrayString = JSON.stringify(this.courses)
+        let m = JSON.parse(myArrayString)
+        m.push(course)
+        this.courses=m;
+        return m;
+    }
     addModule = (courseId, module) =>{
         let index1
         let course
@@ -98,6 +104,9 @@ export default class CourseService {
         m.push(topic)
         course.modules[moduleIndex].lessons[lessonIndex].topics=m;
         return m;
+    }
+    deleteCourse = (courses) =>{
+        this.courses=courses
     }
 
     deleteModule = (courseId, moduleId) =>{

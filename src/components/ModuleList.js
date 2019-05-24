@@ -7,7 +7,6 @@ export default class ModuleList
     extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {
       module: {
         id: -1,
@@ -19,7 +18,6 @@ export default class ModuleList
     }
   }
   createModule = () => {
-    // this.state.module.push()
     this.state.module.id = (new Date()).getTime()
     this.setState({
       modules: [this.state.module, ...this.state.modules]
@@ -45,7 +43,7 @@ export default class ModuleList
 
   render() {
     return(
-        <div>
+        <div className="container">
           <h3>Module List</h3>
           <ul className="list-group">
             <li className="list-group-item">

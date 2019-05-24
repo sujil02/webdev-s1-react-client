@@ -1,0 +1,42 @@
+.navBarCss{
+    display: inline-block;
+    font-size: 20px;
+    padding: 30px;
+}
+.whiteboardCss{
+    padding: 30px;
+}
+.main {
+    background: beige;
+}
+.table-Header {
+    background: antiquewhite;
+}
+.course-manger-tag{
+    padding-left: 60px;
+    background: dodgerblue;
+}
+.circle{
+    color: white;
+    background: red;
+    border-radius: 60%;
+    padding: 0.5%;
+    width: 30px;
+    height: 30px;
+}
+
+.mid-pad{
+    padding-left: 50px;
+}
+.plus-button{
+    color: red;
+}
+.wd-bottom-right {
+    position: fixed;
+    bottom:10px;
+    right: 10px;
+}
+h2{
+    color: darkgreen;
+    padding: 10px;
+}

@@ -3,6 +3,8 @@ import ModuleList from "./ModuleList";
 import LessonTabs from "./LessonTabs";
 import TopicPills from "./TopicPills";
 import CourseService from "../services/CourseService";
+import './css/AllCss.css'
+import './css/CourseEditor.css'
 let courseService =
     CourseService.getInstance();
 export default class CourseEditor
@@ -50,16 +52,20 @@ export default class CourseEditor
   render() {
     return(
 
-        <div>
+        <div className="container">
           {this.componentUpdate()}
-          <h2>{this.state.course.title} {this.state.course.id}</h2>
+          <h2>Course Name - {this.state.course.title} Course Id - {this.state.course.id}</h2>
           <div className="row">
             <div className="col-4 left">
               <ModuleList courseId={this.state.courseId} modules={this.state.course.modules}/>
             </div>
             <div className="col-8 right">
-              {this.renderLessons()}
+              <div className="lessonTabCss">
+                {this.renderLessons()}
+              </div>
+              <div className="topicTabCss">
               {this.renderTopics()}
+              </div>
             </div>
           </div>
         </div>

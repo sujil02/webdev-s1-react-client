@@ -124,5 +124,30 @@
     "id": "456",
     "title": "Course 4",
     "modules": []
+  },
+  {
+    "id": "c5",
+    "title": "Course 5",
+    "modules": []
+  },
+  {
+    "id": "c6",
+    "title": "Course 6",
+    "modules": []
+  },
+  {
+    "id": "c7",
+    "title": "Course 7",
+    "modules": []
+  },
+  {
+    "id": "c8",
+    "title": "Course 8",
+    "modules": []
+  },
+  {
+    "id": "c9",
+    "title": "Course 9",
+    "modules": []
   }
 ]
