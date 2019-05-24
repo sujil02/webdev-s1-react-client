@@ -18,6 +18,20 @@ export default class CourseService {
         return this.courses;
     }
 
+    findLesson= (courseId, moduleId, lessonId) => {
+        let index1
+        let course
+        this.courses.forEach(function (c,index){
+            if(c.id == courseId){
+                index1 =index
+                course = c
+            }
+        })
+        let module = course.modules.find(module => module.id == moduleId)
+        let lesson = module.lessons.find(lesson => lesson.id == lessonId)
+        return lesson
+    }
+
     addModule = (courseId, module) =>{
         let index1
         let course
@@ -55,6 +69,36 @@ export default class CourseService {
         course.modules[moduleIndex].lessons=m;
         return m;
     }
+    addTopic = (courseId, moduleId, lessonId,topic) =>{
+        let courseIndex
+        let moduleIndex
+        let lessonIndex
+        let course
+        let module
+        let lesson
+        this.courses.forEach(function (c,index){
+            if(c.id == courseId){
+                course = c
+                c.modules.forEach(function (m,i) {
+                    if(m.id == moduleId){
+                        moduleIndex = i
+                        module = m
+                        m.lessons.forEach(function(l,i) {
+                            if (l.id == lessonId) {
+                            lessonIndex = i
+                            lesson = l
+                         }
+                        })
+                    }
+                })
+            }
+        })
+        const myArrayString = JSON.stringify(course.modules[moduleIndex].lessons[lessonIndex].topics)
+        let m = JSON.parse(myArrayString)
+        m.push(topic)
+        course.modules[moduleIndex].lessons[lessonIndex].topics=m;
+        return m;
+    }
 
     deleteModule = (courseId, moduleId) =>{
         let index1
@@ -81,6 +125,20 @@ export default class CourseService {
         })
         let module = course.modules.find(module => module.id == moduleId)
         module.lessons = lesson
+        return course
+    }
+    deleteTopic = (courseId, moduleId, lessonId,topics) =>{
+        let index1
+        let course
+        this.courses.forEach(function (c,index){
+            if(c.id == courseId){
+                index1 =index
+                course = c
+            }
+        })
+        let module = course.modules.find(module => module.id == moduleId)
+        let l = module.lessons.find(lesson => lesson.id == lessonId)
+        l.topics =topics
         return course
     }
 }

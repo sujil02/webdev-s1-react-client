@@ -1,7 +1,8 @@
 import React from 'react'
 import Topic from "./Topic";
-import Lesson from "./Lesson";
-
+import CourseService from "../services/CourseService";
+let courseService =
+    CourseService.getInstance();
 export default class TopicPills extends React.Component {
     constructor(props) {
         const pathname = window.location.pathname
@@ -12,33 +13,84 @@ export default class TopicPills extends React.Component {
         const topicId = paths[5]
         console.log(courseId)
         super(props);
-        this.lessons = props.topics
+        this.lessons = props.lessons
         this.state = {
-
             topic: {
                 id: -1,
-                title: 'New Lesson'
+                title: 'New Topic'
             },
             lesson: this.lessons.find(topics => topics.id == lessonId),
             courseId: props.courseId,
-
+            moduleId: moduleId,
+            lessonId : lessonId
 
         }
+    }
+    createTopic = () => {
+        // this.state.module.push()
+        this.state.topic.id = (new Date()).getTime()
+        this.setState({
+            topics:  courseService.addTopic(this.props.courseId, this.props.moduleId, this.state.lessonId,this.state.topic)
+        })
+
+    }
+    titleChanged = (event) => {
+        console.log(event.target.value)
+        this.setState({
+            topic: {
+                title: event.target.value,
+                id: (new Date()).getTime()
+            }
+        })
+    }
+    findLesson = (moduleId, lessonId) => {
+        let mod = this.state.course.modules.find(modules => modules.id == moduleId)
+        let lesson = mod.lessons.find(lesson=>lesson.id == lessonId);
+        return lesson;
+    }
+    deleteTopic = (courseId, moduleId, lessonId,topicId) => {
+        this.setState({
+            topics: this.state.lesson.topics.filter(topic => topic.id !== topicId)
+        })
+        courseService.deleteTopic(courseId,moduleId,lessonId,   this.state.lesson.topics.filter(topics => topics.id != topicId))
+    }
+    componentUpdate =()=> {
+        const pathname = window.location.pathname
+        const paths = pathname.split('/')
+        this.courseId = paths[2]
+        this.state.moduleId = paths[3]
+        this.state.lessonId = paths[4]
+        this.state.topicId = paths[5]
+        this.state.lesson = courseService.findLesson(this.state.courseId,this.state.moduleId, this.state.lessonId)
     }
   render() {
       return(
           <div>
+              {this.componentUpdate()}
               <ul className="nav nav-pills">
                   {
-                      this.props.lesson.topics.map(
+                      this.state.lesson.topics.map(
                           topic =>
                               <Topic
                                   courseId={this.state.courseId}
-                                  deleteModule={this.deleteModule}
+                                  moduleId={this.state.moduleId}
+                                  lessonId={this.state.lessonId}
+                                  deleteTopic={this.deleteTopic}
                                   topic={topic}
-                                  key={module.id}/>
+                                  key={topic.id}/>
                       )
                   }
+
+                  <li >
+                      <div>
+                          <input
+                              onChange={this.titleChanged}
+                              defaultValue={this.state.topic.title}
+                              className="form-control"/>
+                          <button onClick={this.createTopic} className="fa fa-plus">
+                          </button>
+                      </div>
+                  </li>
               </ul>
           </div>
       )

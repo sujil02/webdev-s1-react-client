@@ -26,7 +26,8 @@ export default class LessonTabs extends React.Component {
             lessons: props.lessons
 
         }
-    }  createLesson = () => {
+    }
+    createLesson = () => {
         // this.state.module.push()
         this.state.lesson.id = (new Date()).getTime()
         this.setState({
@@ -84,7 +85,7 @@ export default class LessonTabs extends React.Component {
                                     deleteLesson={this.deleteLesson}
                                     moduleId = {this.props.moduleId}
                                     lesson={lesson}
-                                    key={module.id}/>
+                                    key={lesson.id}/>
                         )
                     }
                     <li >

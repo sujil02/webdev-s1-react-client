@@ -81,9 +81,9 @@ export default class CourseEditor
   renderTopics =() =>{
     if(this.state.topicId){
       return (
-          <TopicPills courseId={this.state.courseId} lessonId={this.state.moduleId}
+          <TopicPills courseId={this.state.courseId} moduleId={this.state.moduleId}
                       lesson = {this.findLesson(this.state.moduleId,this.state.lessonId)}
-                      topics={this.findModule(this.state.moduleId).lessons}/>
+                      lessons={this.findModule(this.state.moduleId).lessons}/>
       )
     }
   }
