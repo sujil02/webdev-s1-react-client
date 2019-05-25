@@ -71,7 +71,7 @@ export default class LessonTabs extends React.Component {
     }
     updateLesson = (courseId,moduleId,id) => {
         this.setState({
-            lessons: courseService.updateLesson(courseId,moduleId,id,  window.prompt())
+            lessons: courseService.updateLesson(courseId,moduleId,id,  window.prompt("Please enter new lesson title"))
         })
     }
     render() {

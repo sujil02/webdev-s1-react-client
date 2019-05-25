@@ -44,12 +44,19 @@ export default class CourseTable
     }
     updateCourse = (course) => {
         this.setState({
-            courses: courseService.updateCourse(course.id,  window.prompt())
+            courses: courseService.updateCourse(course.id,  window.prompt("Please enter new course title"))
         })
+    }
+    componentUpdate =()=> {
+        const pathname = window.location.pathname
+        const paths = pathname.split('/')
+        this.state.moduleId = paths[1]
+        this.state.courses = courseService.findAllCourses()
     }
     render() {
         return(
                 <div className="main">
+                    {this.componentUpdate()}
                     <div className="course-manger-tag">
                         <div className="row align-items-center">
                             <div className="col d-none d-md-inline-block">

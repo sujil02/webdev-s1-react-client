@@ -59,7 +59,7 @@ export default class TopicPills extends React.Component {
     updateTopic = (courseId, moduleId, lessonId,topicId) => {
         this.setState({
             topics: courseService.updateTopic(courseId,moduleId,lessonId, topicId,
-                window.prompt("Please enter new Title"))
+                window.prompt("Please enter new topic title"))
         })
     }
     componentUpdate =()=> {

@@ -46,7 +46,7 @@ export default class ModuleList
     courseService.deleteModule(this.state.courseId,id)
   }
   updateModule = (id) => {
-    let title=window.prompt();
+    let title=window.prompt("Please enter new module title");
     this.setState({
       modules : courseService.updateModule(this.state.courseId, id, title)
     })

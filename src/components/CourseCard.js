@@ -6,7 +6,10 @@ const CourseCard = ({deleteCourse,course}) =>
             <div className=" card mb-2">
                 <img className="card-img-top"  src="https://picsum.photos/300/200" alt="Card image cap"/>
             <div className="card-body">
-                <h5 className="card-title"> {course.title}</h5>
+                <Link to={`/course-editor/${course.id}/dummy`}>
+                    {course.title}
+                </Link>
+                <h5 className="card-title"> </h5>
                 <p className="card-text">Card text.</p>
             </div>
                 <Link className=" btn btn-primary float-right" to={`/course-editor/${course.id}/dummy`}>
