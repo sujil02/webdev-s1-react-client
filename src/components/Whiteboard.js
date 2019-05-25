@@ -22,13 +22,12 @@ export default class Whiteboard extends React.Component {
     return (
         <Router>
           <div className="container-fluid containerCSS">
-          <div className="container">
+          <div className="container-fluid">
             <div className="whiteBoardHeader">
               <h1>WhiteBoard</h1>
             <div className="linksCss">
             <Link to="/course-list">List -</Link>-
-            <Link to="/course-grid">- Grid -</Link>-
-            <Link to="/course-editor/">- Editor</Link>
+            <Link to="/course-grid">- Grid</Link>
           </div>
             <Route
                 exact path="/course-grid"

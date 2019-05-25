@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 import '../css/CourseCard.css'
 
 const CourseCard = ({deleteCourse,course}) =>
-            <div className="card">
+            <div className=" card mb-2">
                 <img className="card-img-top"  src="https://picsum.photos/300/200" alt="Card image cap"/>
             <div className="card-body">
                 <h5 className="card-title"> {course.title}</h5>

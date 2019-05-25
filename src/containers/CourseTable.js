@@ -46,7 +46,6 @@ export default class CourseTable
         this.setState({
             courses: courseService.updateCourse(course.id,  window.prompt())
         })
-
     }
     render() {
         return(
