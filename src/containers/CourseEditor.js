@@ -3,7 +3,7 @@ import ModuleList from "../components/ModuleList";
 import LessonTabs from "../components/LessonTabs";
 import TopicPills from "../components/TopicPills";
 import CourseService from "../services/CourseService";
-import '../css/AllCss.css'
+import '../css/SharedCSS.css'
 import '../css/CourseEditor.css'
 let courseService =
     CourseService.getInstance();

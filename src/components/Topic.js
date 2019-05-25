@@ -1,6 +1,6 @@
 import React from 'react'
 import {Link} from "react-router-dom";
-import '../css/AllCss.css'
+import '../css/SharedCSS.css'
 
 const Topic = ({courseId, moduleId, lessonId, topic, topicId, updateTopic, deleteTopic}) =>
 

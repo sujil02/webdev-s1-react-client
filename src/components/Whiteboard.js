@@ -7,6 +7,7 @@ import CourseService from '../services/CourseService';
 import '../css/Whiteboard.css'
 let courseService =
     CourseService.getInstance();
+
 export default class Whiteboard extends React.Component {
   constructor(props) {
     super(props)
@@ -15,8 +16,6 @@ export default class Whiteboard extends React.Component {
         courseService.findAllCourses()
 
   }
-
-
 
   render() {
     return (

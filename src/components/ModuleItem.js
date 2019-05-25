@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link, Route} from 'react-router-dom'
-import '../css/AllCss.css'
+import '../css/SharedCSS.css'
 const ModuleItem = ({courseId, module, moduleId,updateModule,deleteModule}) =>
     <div>
         {module.id==moduleId ? (

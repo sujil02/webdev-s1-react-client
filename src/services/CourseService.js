@@ -31,6 +31,9 @@ export default class CourseService {
         let lesson = module.lessons.find(lesson => lesson.id == lessonId)
         return lesson
     }
+    /*
+        Following are the add methods used to edit the course object.
+     */
     addCourse = (course) =>{
         const myArrayString = JSON.stringify(this.courses)
         let m = JSON.parse(myArrayString)
@@ -105,6 +108,9 @@ export default class CourseService {
         course.modules[moduleIndex].lessons[lessonIndex].topics=m;
         return m;
     }
+    /*
+        Following are the add methods used to edit the course object.
+    */
     deleteCourse = (courses) =>{
         this.courses=courses
     }
@@ -153,6 +159,9 @@ export default class CourseService {
         l.topics =topics
         return course
     }
+    /*
+        Following are the update methods used to alter the course object.
+    */
     updateCourse = (courseId,title) =>{
         let index1
         let course

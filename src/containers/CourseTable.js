@@ -1,7 +1,7 @@
 import React from 'react'
 import CourseRow from '../components/CourseRow'
 import CourseService from "../services/CourseService";
-import '../css/AllCss.css'
+import '../css/SharedCSS.css'
 import {Link} from "react-router-dom";
 let courseService =
     CourseService.getInstance();
