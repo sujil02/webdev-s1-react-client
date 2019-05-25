@@ -119,8 +119,9 @@ export default class CourseService {
             }
         })
 
-        let module = course.modules.filter(module => module.id !== moduleId)
-        return module
+        let modules = course.modules.filter(module => module.id !== moduleId)
+        course.modules = modules
+        return modules
     }
     deleteCourse = (courses) =>{
         this.courses=courses
