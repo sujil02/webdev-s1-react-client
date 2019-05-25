@@ -10,7 +10,7 @@ const ModuleItem = ({courseId, module, moduleId,updateModule,deleteModule}) =>
                         className="fa fa-pencil float-right"></button>
                 <Link onClick={() => deleteModule(module.id)}
                       to={`/course-editor/${courseId}/${module.id}`}
-                      className="fa fa-trash float-right btn"></Link>
+                      className="fa fa-trash float-right button "></Link>
             </li>
         ) : (
             <li className="list-group-item">
@@ -19,7 +19,7 @@ const ModuleItem = ({courseId, module, moduleId,updateModule,deleteModule}) =>
                         className="fa fa-pencil float-right"></button>
                 <Link onClick={() => deleteModule(module.id)}
                       to={`/course-editor/${courseId}/${module.id}`}
-                        className="fa fa-trash float-right"></Link>
+                        className="fa fa-trash float-right button"></Link>
             </li>
         )}
     </div>

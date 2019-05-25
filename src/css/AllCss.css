@@ -53,3 +53,9 @@ h1{
 .reorderIconCSS{
     margin: 5px;
 }
+.button {
+    background-color: #ddd;
+    color: black;
+    padding: 4px;
+    cursor: pointer;
+}

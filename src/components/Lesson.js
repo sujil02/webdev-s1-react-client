@@ -1,6 +1,6 @@
 import React from 'react'
 import {Link} from "react-router-dom";
-
+import '../css/AllCss.css'
 const Lesson = ({courseId, moduleId,lesson, lessonId,updateLesson,deleteLesson}) =>
 
 <div>
@@ -17,8 +17,9 @@ const Lesson = ({courseId, moduleId,lesson, lessonId,updateLesson,deleteLesson})
             )}
             <button onClick={() => updateLesson(courseId, moduleId, lesson.id)}
                     className="fa fa-pencil float-right"></button>
-                <button onClick={() => deleteLesson(courseId, moduleId, lesson.id)}
-                        className="fa fa-trash float-right"></button>
+                <Link to={`/course-editor/${courseId}/${moduleId}/${lesson.id}`}
+                      onClick={() => deleteLesson(courseId, moduleId, lesson.id)}
+                        className="fa fa-trash float-right button"></Link>
         </div>
     </li>
 
