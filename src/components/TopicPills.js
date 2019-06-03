@@ -1,7 +1,7 @@
 import React from 'react'
 import Topic from "./Topic";
 import CourseService from "../services/CourseService";
-import Widget from "./Widget";
+import WidgetListComponent from "./WidgetListComponent";
 import '../css/SharedCSS.css'
 let courseService =
     CourseService.getInstance();
@@ -110,7 +110,7 @@ export default class TopicPills extends React.Component {
         if(this.state.widgetId){
             return (
                 <div className="widgetTabCss">
-                <Widget/>
+                <WidgetListComponent/>
                 </div>
             )
         }

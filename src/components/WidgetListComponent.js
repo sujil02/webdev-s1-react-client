@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Widget = () =>
+const WidgetListComponent = () =>
     <div className="card widgetCss" >
         <div className="card-header">
             <div className="row justify-content-end ml-auto mr-1">
@@ -45,4 +45,4 @@ const Widget = () =>
 
     </div>
 
-export default Widget
+export default WidgetListComponent
