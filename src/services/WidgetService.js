@@ -2,6 +2,7 @@ import widgets from './widgets.json'
 
 export default class WidgetService {
     static myInstance = null;
+
     static getInstance() {
         if (WidgetService.myInstance == null) {
             WidgetService.myInstance =
@@ -10,24 +11,36 @@ export default class WidgetService {
         return this.myInstance;
     }
 
-    createWidget = widget => {
-        widgets.push(widget)
-    }
+    createWidget = widget =>
+        fetch("http://localhost:8080/api/widgets", {
+            method: 'POST',
+            body: JSON.stringify(widget),
+            headers: {
+                'content-type': 'application/json'
+            }
+        })
+            .then(response => response.json())
+
     findAllWidgets = () =>
-        widgets
+        fetch("http://localhost:8080/api/widgets")
+            .then(response => response.json())
 
     findWidgetById = widgetId => {
         return widgets.find(widget => widget.id == widgetId)
     }
-    deleteWidget = widgetId => {
-        widgets = widgets.filter(widget => widget.id !== widgetId)
-    }
-    udpateWidget = (widgetId, newwidget) => {
-        widgets = widgets.map(widget => {
-            if(widget.id != widgetId)
-                return widget;
-            else
-                return newwidget;
+    deleteWidget = widgetId =>
+        fetch(`http://localhost:8080/api/widgets/${widgetId}`, {
+            method: 'DELETE'
         })
-    }
+            .then(response => response.json())
+
+    updateWidget = (newWidget) =>
+        fetch(`http://localhost:8080/api/widgets/${newWidget.id}`, {
+            method: 'PUT',
+            body: JSON.stringify(newWidget),
+            headers: {
+                'content-type': 'application/json'
+            }
+        })
+            .then(response => response.json())
 }

@@ -56,10 +56,10 @@ export default class CourseEditor
           <h2>Course ID - {this.state.course.id}</h2>
           <div className="container">
           <div className="row">
-            <div className="col-4 left moduleTabCss">
+            <div className="col-3 left moduleTabCss">
               {this.renderModules()}
             </div>
-            <div className="col-8 right">
+            <div className="col-9 right">
               <div className="lessonTabCss">
                 {this.renderLessons()}
               </div>

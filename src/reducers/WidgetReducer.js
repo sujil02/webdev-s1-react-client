@@ -2,14 +2,15 @@ import widgetService from '../services/WidgetService'
 const service = widgetService.getInstance();
 let widgets = service.findAllWidgets();
 
-const widgetReducer = (state = {widgets: widgets}, action) => {
+const widgetReducer = (state = {widgets: []}, action) => {
     switch (action.type) {
         case "CREATE_WIDGET":
-            break;
         case "FIND_ALL_WIDGETS":
-            break;
         case "DELETE_WIDGET":
-            break;
+        case "UPDATE_WIDGET":
+            return {
+                widgets: action.widgets
+            }
         default:
             return state;
     }
