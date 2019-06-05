@@ -20,7 +20,7 @@ export default class CourseEditor
     this.courses = props.courses
     this.state = {
       courseId: courseId,
-      course: this.courses.find(course => course.id == courseId),
+      course: this.courses.find(course => course.id === courseId),
       moduleId:moduleId,
       lessonId:lessonId,
 
@@ -34,7 +34,7 @@ export default class CourseEditor
 
   findLesson = (moduleId, lessonId) => {
     let mod = this.state.course.modules.find(modules => modules.id == moduleId)
-    let lesson = mod.lessons.find(lesson=>lesson.id == lessonId);
+    let lesson = mod.lessons.find(lesson=>lesson.id === lessonId);
     return lesson;
   }
   componentUpdate =()=> {
@@ -44,7 +44,7 @@ export default class CourseEditor
     this.state.moduleId = paths[3]
     this.state.lessonId = paths[4]
     this.state.topicId = paths[5]
-    this.state.course = courseService.findAllCourses().find(course => course.id == this.courseId)
+    this.state.course = courseService.findAllCourses().find(course => course.id === this.courseId)
   }
 
   render() {

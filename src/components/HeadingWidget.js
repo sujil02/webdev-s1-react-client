@@ -1,10 +1,6 @@
 import React from 'react'
 
 export default class HeadingWidget extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         return (
             <div>
@@ -42,7 +38,9 @@ export default class HeadingWidget extends React.Component {
                     </div>
                     <form>
                         <div className="form-group">
-                            <input className="form-control" placeholder="Heading Widget"/>
+                            <input className="form-control"
+                                   placeholder="Heading Widget"
+                            />
                         </div>
                         <div className="form-group">
                             <select className="form-control">
@@ -51,7 +49,9 @@ export default class HeadingWidget extends React.Component {
                             </select>
                         </div>
                         <div className="form-group">
-                            <input className="form-control" placeholder="Widget Name"/>
+                            <input className="form-control"
+                                   defaultValue={this.props.widget.name}
+                                   placeholder="Widget Name"/>
                         </div>
                     </form>
                     <h4>Preview</h4>

@@ -1,9 +1,6 @@
 import React from 'react'
 
 export default class ListWidget extends React.Component {
-    constructor(props) {
-        super(props);
-    }
 
     render() {
         return (
@@ -46,11 +43,14 @@ export default class ListWidget extends React.Component {
                         </div>
                         <div className="form-group">
                             <select className="form-control">
-                                <option>Heading 1</option>
+                                <option>Unordered list</option>
+                                <option>Ordered list</option>
                             </select>
                         </div>
                         <div className="form-group">
-                            <input className="form-control" placeholder="Widget Name"/>
+                            <input className="form-control"
+                                   placeholder="Widget Name"
+                                   defaultValue={this.props.widget.name}/>
                         </div>
                     </form>
                     <h4>Preview</h4>

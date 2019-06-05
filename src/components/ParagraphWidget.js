@@ -47,7 +47,7 @@ export default class ParagraphWidget extends React.Component {
                         <div className="form-group">
                             <input className="form-control"
                                    placeholder="Widget Name"
-                                   value={this.props.widget.name}/>
+                                   defaultValue={this.props.widget.name}/>
                         </div>
                     </form>
                     <h4>Preview</h4>

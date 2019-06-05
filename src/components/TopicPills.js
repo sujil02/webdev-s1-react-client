@@ -20,7 +20,7 @@ export default class TopicPills extends React.Component {
                 id: -1,
                 title: 'New Topic'
             },
-            lesson: this.lessons.find(topics => topics.id == lessonId),
+            lesson: this.lessons.find(topics => topics.id === lessonId),
             courseId: props.courseId,
             moduleId: moduleId,
             lessonId : lessonId
@@ -45,7 +45,7 @@ export default class TopicPills extends React.Component {
         })
     }
     findLesson = (moduleId, lessonId) => {
-        let mod = this.state.course.modules.find(modules => modules.id == moduleId)
+        let mod = this.state.course.modules.find(modules => modules.id === moduleId)
         let lesson = mod.lessons.find(lesson=>lesson.id == lessonId);
         return lesson;
     }

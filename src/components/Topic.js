@@ -7,7 +7,7 @@ const Topic = ({courseId, moduleId, lessonId, topic, topicId, updateTopic, delet
 
     <div>
         <li className="nav-item">
-            {topic.id==topicId ? (
+            {topic.id===topicId ? (
                 <Link className="nav-link active" to={`/course-editor/${courseId}/${moduleId}/${lessonId}/${topic.id}/dummy`}>
                     {topic.title}
                 </Link>

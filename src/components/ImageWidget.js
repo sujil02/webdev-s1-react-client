@@ -1,10 +1,9 @@
 import React from 'react'
 
 export default class ImageWidget extends React.Component {
-    constructor(props) {
-        super(props);
+    handleChange(event) {
+        this.setState({value: event.target.value});
     }
-
     render() {
         return (
                 <div className="card widgetCss">

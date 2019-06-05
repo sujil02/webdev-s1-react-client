@@ -3,6 +3,11 @@ import React from 'react'
 export default class LinkWidget extends React.Component {
     constructor(props) {
         super(props);
+        this.linkChanged = this.linkChanged.bind(this);
+    }
+    linkChanged = (event) => {
+        console.log(event.target.value)
+        this.props.widget.srcUrl = event.target.value
     }
 
     render() {
@@ -42,17 +47,27 @@ export default class LinkWidget extends React.Component {
                     </div>
                     <form>
                         <div className="form-group">
-                            <input className="form-control" placeholder="Link Widget"/>
+                            <input className="form-control"
+                                   placeholder="Link URL"
+                                   defaultValue={this.props.widget.srcUrl}
+                                   onChange={(event) => this.props.updateWidget({
+                                       ...this.props.widget,
+                                       type: event.target.value
+                                   })}/>
                         </div>
                         <div className="form-group">
-                            <input className="form-control" placeholder="Link text"/>
+                            <input className="form-control"
+                                   placeholder="Link text"
+                                   defaultValue={this.props.widget.text}/>
                         </div>
                         <div className="form-group">
-                            <input className="form-control" placeholder="Widget Name"/>
+                            <input className="form-control"
+                                   placeholder="Widget Name"
+                                   defaultValue={this.props.widget.name}/>
                         </div>
                     </form>
                     <h4>Preview</h4>
-                    <a href="https://google.com">Link</a>
+                    <a href={this.props.widget.srcUrl}>Link</a>
                 </div>
             </div>
 
