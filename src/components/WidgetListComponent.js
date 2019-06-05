@@ -6,6 +6,7 @@ import { Switch, Case, Default } from 'react-if'
 import ParagraphWidget from "./ParagraphWidget";
 import ListWidget from "./ListWidget";
 import ImageWidget from "./ImageWidget";
+import LinkWidget from "./LinkWidget";
 
 class WidgetListComponent extends React.Component {//({widgets}) =>
     constructor(props) {
@@ -15,9 +16,8 @@ class WidgetListComponent extends React.Component {//({widgets}) =>
 
     render() {
         return (
-            <div>
+            <div style={{'padding':'10px'}}>
                 <h1>Widget List {this.props.widgets.length}</h1>
-                <ul>
                     {
                         this.props.widgets.map(
                             widget =>
@@ -51,7 +51,7 @@ class WidgetListComponent extends React.Component {//({widgets}) =>
                                       deleteWidget={this.props.deleteWidget}/>
                               </Case>
                               <Case condition={widget.type === 'LINK'}>
-                                  <ImageWidget
+                                  <LinkWidget
                                       key={widget.id}
                                       updateWidget={this.props.updateWidget}
                                       widget={widget}
@@ -60,7 +60,6 @@ class WidgetListComponent extends React.Component {//({widgets}) =>
                           </Switch>
                         )
                     }
-                </ul>
                 <div className="row justify-content-end">
                     <button className="btn btn-danger" onClick={this.props.createWidget}>
                         <i className="fa fa-plus-circle"></i>

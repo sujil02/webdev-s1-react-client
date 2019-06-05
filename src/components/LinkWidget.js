@@ -51,16 +51,8 @@ export default class LinkWidget extends React.Component {
                             <input className="form-control" placeholder="Widget Name"/>
                         </div>
                     </form>
-                    <div className="row">
-                        <div className="d-flex">
-                            <h4><strong>Preview</strong></h4>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="d-flex">
-                            <a className="card-img-top" href="https://picsum.photos/300/200" alt="Card image cap"/>
-                        </div>
-                    </div>
+                    <h4>Preview</h4>
+                    <a href="https://google.com">Link</a>
                 </div>
             </div>
 

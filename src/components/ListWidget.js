@@ -53,16 +53,12 @@ export default class ListWidget extends React.Component {
                             <input className="form-control" placeholder="Widget Name"/>
                         </div>
                     </form>
-                    <div className="row">
-                        <div className="d-flex">
-                            <h4><strong>Preview</strong></h4>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="d-flex">
-                            <h2><strong>{this.props.widget.name}</strong></h2>
-                        </div>
-                    </div>
+                    <h4>Preview</h4>
+                    <ul>
+                        <li>{this.props.widget.name}</li>
+                        <li>{this.props.widget.id}</li>
+                        <li>{this.props.widget.type}</li>
+                    </ul>
                 </div>
             </div>
 

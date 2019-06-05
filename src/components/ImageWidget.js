@@ -7,7 +7,6 @@ export default class ImageWidget extends React.Component {
 
     render() {
         return (
-            <div>
                 <div className="card widgetCss">
                     <div className="card-header">
                         <div className="row justify-content-end ml-auto mr-1">
@@ -40,7 +39,7 @@ export default class ImageWidget extends React.Component {
                             </button>
                         </div>
                     </div>
-                    <form>
+                    <form style={{'padding': '10.1em'}}>
                         <div className="form-group">
                             <input className="form-control" placeholder="Image Widget"/>
                         </div>
@@ -48,19 +47,9 @@ export default class ImageWidget extends React.Component {
                             <input className="form-control" placeholder="Widget Name"/>
                         </div>
                     </form>
-                    <div className="row">
-                        <div className="d-flex">
                             <h4><strong>Preview</strong></h4>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="d-flex">
-                            <img className="card-img-top" src="https://picsum.photos/300/200" alt="Card image cap"/>
-                        </div>
-                    </div>
+                            <img  src="https://picsum.photos/300/200"/>
                 </div>
-            </div>
-
         )
     }
 

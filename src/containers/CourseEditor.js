@@ -54,7 +54,6 @@ export default class CourseEditor
           {this.componentUpdate()}
           <h2>Course Name - {this.state.course.title}</h2>
           <h2>Course ID - {this.state.course.id}</h2>
-          <div className="container">
           <div className="row">
             <div className="col-3 left moduleTabCss">
               {this.renderModules()}
@@ -69,7 +68,6 @@ export default class CourseEditor
             </div>
           </div>
           </div>
-        </div>
     )
   }
   renderModules =() =>{
