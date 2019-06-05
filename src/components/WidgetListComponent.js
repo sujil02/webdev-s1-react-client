@@ -1,5 +1,11 @@
 import React from 'react'
 import WidgetListItemComponent from './WidgetListItemComponent'
+import HeadingWidget from "./HeadingWidget";
+import {If, Then} from 'react-if'
+import { Switch, Case, Default } from 'react-if'
+import ParagraphWidget from "./ParagraphWidget";
+import ListWidget from "./ListWidget";
+import ImageWidget from "./ImageWidget";
 
 class WidgetListComponent extends React.Component {//({widgets}) =>
     constructor(props) {
@@ -15,11 +21,43 @@ class WidgetListComponent extends React.Component {//({widgets}) =>
                     {
                         this.props.widgets.map(
                             widget =>
-                                <WidgetListItemComponent
-                                    key={widget.id}
-                                    updateWidget={this.props.updateWidget}
-                                    widget={widget}
-                                    deleteWidget={this.props.deleteWidget}/>
+                          <Switch>
+                              <Case condition={widget.type === 'HEADING'}>
+                                  <HeadingWidget
+                                      key={widget.id}
+                                      updateWidget={this.props.updateWidget}
+                                      widget={widget}
+                                      deleteWidget={this.props.deleteWidget}/>
+                              </Case>
+                              <Case condition={widget.type === 'LIST'}>
+                                  <ListWidget
+                                      key={widget.id}
+                                      updateWidget={this.props.updateWidget}
+                                      widget={widget}
+                                      deleteWidget={this.props.deleteWidget}/>
+                              </Case>
+                              <Case condition={widget.type === 'PARAGRAPH'}>
+                                  <ParagraphWidget
+                                      key={widget.id}
+                                      updateWidget={this.props.updateWidget}
+                                      widget={widget}
+                                      deleteWidget={this.props.deleteWidget}/>
+                              </Case>
+                              <Case condition={widget.type === 'IMAGE'}>
+                                  <ImageWidget
+                                      key={widget.id}
+                                      updateWidget={this.props.updateWidget}
+                                      widget={widget}
+                                      deleteWidget={this.props.deleteWidget}/>
+                              </Case>
+                              <Case condition={widget.type === 'LINK'}>
+                                  <ImageWidget
+                                      key={widget.id}
+                                      updateWidget={this.props.updateWidget}
+                                      widget={widget}
+                                      deleteWidget={this.props.deleteWidget}/>
+                              </Case>
+                          </Switch>
                         )
                     }
                 </ul>

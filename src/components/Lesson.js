@@ -6,7 +6,7 @@ const Lesson = ({courseId, moduleId,lesson, lessonId,updateLesson,deleteLesson})
 <div>
     <li className="nav-item">
         <div >
-            {lesson.id==lessonId ? (
+            {lesson.id===lessonId ? (
                 <Link className="nav-link active" to={`/course-editor/${courseId}/${moduleId}/${lesson.id}/dummy`}>
                     {lesson.title}
                 </Link>
