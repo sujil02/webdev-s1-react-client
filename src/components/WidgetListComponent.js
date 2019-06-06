@@ -19,6 +19,12 @@ class WidgetListComponent extends React.Component {//({widgets}) =>
         this.setState({
             editing: !this.state.editing
         })
+    changeWidgetOrder = (widget, type) => {
+        this.props.changeWidgetOrder(this.props.widgets, widget, type)
+    }
+    changeWidget = (widget) => {
+        this.props.changeWidget(this.props.widgets, widget)
+    }
 
     render() {
         return (
@@ -48,7 +54,8 @@ class WidgetListComponent extends React.Component {//({widgets}) =>
                                     <HeadingWidget
                                         key={widget.id}
                                         updateWidget={this.props.updateWidget}
-                                        changeWidget={this.props.changeWidget}
+                                        changeWidget={this.changeWidget}
+                                        changeWidgetOrder={this.changeWidgetOrder}
                                         widget={widget}
                                         editMode={this.state.editing}
                                         widgets={this.props.widgets}
@@ -58,7 +65,7 @@ class WidgetListComponent extends React.Component {//({widgets}) =>
                                     <ListWidget
                                         key={widget.id}
                                         updateWidget={this.props.updateWidget}
-                                        changeWidget={this.props.changeWidget}
+                                        changeWidget={this.changeWidget}
                                         widget={widget}
                                         widgets={this.props.widgets}
                                         editMode={this.state.editing}
@@ -67,7 +74,7 @@ class WidgetListComponent extends React.Component {//({widgets}) =>
                                 <Case condition={widget.type === 'PARAGRAPH'}>
                                     <ParagraphWidget
                                         key={widget.id}
-                                        changeWidget={this.props.changeWidget}
+                                        changeWidget={this.changeWidget}
                                         updateWidget={this.props.updateWidget}
                                         widget={widget}
                                         widgets={this.props.widgets}
@@ -98,7 +105,12 @@ class WidgetListComponent extends React.Component {//({widgets}) =>
                     )
                 }
                 <div className="row justify-content-end">
-                    <button className="btn btn-danger" onClick={this.props.createWidget}>
+                    <button className="btn btn-danger" onClick={
+                        () => {
+                            var last_element = this.props.widgets[this.props.widgets.length - 1];
+                            this.props.createWidget(last_element.order)
+                        }
+                    }>
                         <i className="fa fa-plus-circle"></i>
                     </button>
                 </div>

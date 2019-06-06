@@ -7,15 +7,17 @@ const ParagraphWidget = ({widgets, widget, changeWidget, deleteWidget, editMode}
             <div>
                 <div className="card-header">
                     <div className="row justify-content-end ml-auto mr-1">
-                        <button className="btn btn-warning" style={{'margin': '0.1em'}}>
-                            <i className="fa fa-arrow-up"></i>
-                        </button>
+                        <If condition={widget.order != 0}>
+                            <button className="btn btn-warning" style={{'margin': '0.1em'}}>
+                                <i className="fa fa-arrow-up"></i>
+                            </button>
+                        </If>
                         <button className="btn btn-warning" style={{'margin': '0.1em'}}>
                             <i className="fa fa-arrow-down"></i>
                         </button>
                         <span>
                                 <select
-                                    value={widget.type}>
+                                    defaultValue={widget.type}>
                                     <option value="HEADING">Heading</option>
                                     <option value="PARAGRAPH">Paragraph</option>
                                     <option value="YOUTUBE">YouTube</option>

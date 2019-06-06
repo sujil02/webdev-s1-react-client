@@ -1,19 +1,23 @@
 import React from 'react'
 import {If, Then} from 'react-if'
 
-const HeadingWidget = ({widgets, widget, changeWidget, deleteWidget, editMode}) =>
+const HeadingWidget = ({ widget, changeWidget, changeWidgetOrder, deleteWidget, editMode}) =>
     <div>
         <div className="card widgetCss">
             <If condition={editMode}>
                 <div>
                     <div className="card-header">
                         <div className="row justify-content-end ml-auto mr-1">
-                            <If condition={widget.order != 1}>
-                                <button className="btn btn-warning" style={{'margin': '0.1em'}}>
+                            <If condition={widget.order != 0}>
+                                <button className="btn btn-warning" onClick={
+                                    () => changeWidgetOrder(widget,'INC')
+                                }>
                                     <i className="fa fa-arrow-up"></i>
                                 </button>
                             </If>
-                            <button className="btn btn-warning" style={{'margin': '0.1em'}}>
+                            <button className="btn btn-warning" onClick={
+                                () => changeWidgetOrder(widget,'DEC')
+                            }>
                                 <i className="fa fa-arrow-down"></i>
                             </button>
                             <span>
@@ -45,7 +49,6 @@ const HeadingWidget = ({widgets, widget, changeWidget, deleteWidget, editMode}) 
                                    placeholder="Heading Widget"
                                    defaultValue={widget.text}
                                    onChange={(event) => changeWidget(
-                                       widgets = widgets,
                                        widget = ({
                                            ...widget, text: event.target.value
                                        })

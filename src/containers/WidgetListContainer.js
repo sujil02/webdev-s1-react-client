@@ -26,8 +26,25 @@ const propertyToDispatchMapper = dispatch => ({
             widgets: widgets
         })
     },
-    orderWidgets: (widgets) => {
-        widgets = widgets.sort(w => w.order)
+    changeWidgetOrder: (widgets, widget, type) => {
+        let currentIndex
+        widgets.forEach(function (w, index) {
+            if (w.id == widget.id) {
+                currentIndex = index
+            }
+        })
+        if (type === 'DEC') {
+            let currentOrder = widgets[currentIndex].order
+            widgets[currentIndex].order = widgets[currentIndex + 1].order
+            widgets[currentIndex + 1].order = currentOrder
+        }
+        if (type === 'INC') {
+            let currentOrder = widgets[currentIndex].order
+            widgets[currentIndex].order = widgets[currentIndex - 1].order
+            widgets[currentIndex - 1].order = currentOrder
+        }
+        widgets = widgets.filter(w => w.id != widget.id)
+        widgets.push(widget)
         dispatch({
             type: 'ORDER_WIDGET',
             widgets: widgets
@@ -41,12 +58,14 @@ const propertyToDispatchMapper = dispatch => ({
                     type: 'DELETE_WIDGET',
                     widgets: widgets
                 })),
-    createWidget: () =>
+    createWidget: (widgetListLength) =>
         widgetService
             .createWidget({
                 id: (new Date()).getTime(),
                 name: 'New Widget',
-                type: 'HEADING'
+                type: 'HEADING',
+                text: 'New Widget',
+                order: widgetListLength + 1
             })
             .then(widgets =>
                 dispatch({
