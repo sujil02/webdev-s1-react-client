@@ -16,6 +16,8 @@ const linkWidget = ({widget, changeWidget, changeWidgetOrder, deleteWidget, edit
                         editMode={editMode}
                         deleteWidget={deleteWidget}
                     /></div>
+                    <h3>Link Widget</h3>
+
                 </div>
                 <form>
                     <div className="form-group">

@@ -2,19 +2,21 @@ import React from 'react'
 import {If} from "react-if";
 import OrderingWidget from "./OrderingWidget";
 
-const ParagraphWidget = ({ widget, changeWidget, changeWidgetOrder,deleteWidget, editMode}) =>
+const ParagraphWidget = ({widget, changeWidget, changeWidgetOrder, deleteWidget, editMode}) =>
     <div className="card widgetCss">
         <If condition={editMode}>
             <div>
                 <div className="card-header">
                     <div className="row justify-content-end ml-auto mr-1">
                         <OrderingWidget
-                        widget={widget}
-                        changeWidgetOrder={changeWidgetOrder}
-                        changeWidget={changeWidget}
-                        editMode={editMode}
-                        deleteWidget={deleteWidget}
-                    /></div>
+                            widget={widget}
+                            changeWidgetOrder={changeWidgetOrder}
+                            changeWidget={changeWidget}
+                            editMode={editMode}
+                            deleteWidget={deleteWidget}
+                        />
+                    </div>
+                    <h3>Paragraph Widget</h3>
                 </div>
                 <form>
                     <div className="form-group">

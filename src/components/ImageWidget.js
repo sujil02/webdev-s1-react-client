@@ -16,8 +16,9 @@ const imageWidget = ({widget, changeWidget, changeWidgetOrder, deleteWidget, edi
                             deleteWidget={deleteWidget}
                         />
                     </div>
+                    <h3>Image Widget</h3>
                 </div>
-                <form style={{'padding': '10.1em'}}>
+                <form style={{'padding': '1.1em'}}>
                     <div className="form-group">
                         <input className="form-control"
                                placeholder="Image Widget"
@@ -37,6 +38,6 @@ const imageWidget = ({widget, changeWidget, changeWidgetOrder, deleteWidget, edi
 
             </div>
         </If>
-        <img src={widget.srcUrl}/>
+        <img src={widget.srcUrl} width={500}/>
     </div>
 export default imageWidget

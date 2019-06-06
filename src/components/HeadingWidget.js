@@ -17,6 +17,7 @@ const HeadingWidget = ({widget, changeWidget, changeWidgetOrder, deleteWidget, e
                                 deleteWidget={deleteWidget}
                             />
                         </div>
+                        <h3>Heading Widget</h3>
                     </div>
                     <form>
                         <div className="form-group">

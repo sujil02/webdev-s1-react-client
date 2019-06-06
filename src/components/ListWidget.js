@@ -17,6 +17,7 @@ const ListWidget = ({widget, changeWidget, changeWidgetOrder, deleteWidget, edit
                                 deleteWidget={deleteWidget}
                             />
                         </div>
+                        <h3>List Widget</h3>
                     </div>
                     <form>
                         <div className="form-group">
@@ -64,14 +65,12 @@ const ListWidget = ({widget, changeWidget, changeWidgetOrder, deleteWidget, edit
 export default ListWidget
 
 const getList = (widget) => {
-    var list_text_array = widget.text.split("\n");
-    console.log(widget.cssClass)
-
-    switch (widget.cssClass.toString()) {
+    var arrayText = widget.text.split("\n");
+    switch (widget.cssClass) {
         case "UNORDERED":
             return (
                 <ul>
-                    {list_text_array
+                    {arrayText
                         .map((list_item, index) => {
                             return <li className="nav-item" key={index}>
                                 {list_item}
@@ -82,7 +81,7 @@ const getList = (widget) => {
         case "ORDERED":
             return (
                 <ol>
-                    {list_text_array
+                    {arrayText
                         .map((list_item, index) => {
                             return <li className="nav-item" key={index}>
                                 {list_item}
