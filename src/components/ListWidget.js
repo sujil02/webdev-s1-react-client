@@ -1,11 +1,11 @@
 import React from 'react'
+import {If} from "react-if";
 
-export default class ListWidget extends React.Component {
-
-    render() {
-        return (
-            <div>
-                <div className="card widgetCss">
+const ListWidget = ({widgets, widget, changeWidget, deleteWidget, editMode}) =>
+    <div>
+        <div className="card widgetCss">
+            <If condition={editMode}>
+                <div>
                     <div className="card-header">
                         <div className="row justify-content-end ml-auto mr-1">
                             <button className="btn btn-warning" style={{'margin': '0.1em'}}>
@@ -16,11 +16,7 @@ export default class ListWidget extends React.Component {
                             </button>
                             <span>
                                 <select
-                                    onChange={(event) => this.props.updateWidget({
-                                        ...this.props.widget,
-                                        type: event.target.value
-                                    })}
-                                    value={this.props.widget.type}>
+                                    value={widget.type}>
                                     <option value="HEADING">Heading</option>
                                     <option value="PARAGRAPH">Paragraph</option>
                                     <option value="YOUTUBE">YouTube</option>
@@ -31,7 +27,7 @@ export default class ListWidget extends React.Component {
                             </span>
                             <button className="btn btn-danger" style={{'margin': '0.1em'}}
                                     onClick={
-                                        () => this.props.deleteWidget(this.props.widget.id)
+                                        () => this.props.deleteWidget(widget.id)
                                     }>
                                 <i className="fa fa-close"></i>
                             </button>
@@ -50,19 +46,17 @@ export default class ListWidget extends React.Component {
                         <div className="form-group">
                             <input className="form-control"
                                    placeholder="Widget Name"
-                                   defaultValue={this.props.widget.name}/>
+                                   defaultValue={widget.name}/>
                         </div>
                     </form>
-                    <h4>Preview</h4>
-                    <ul>
-                        <li>{this.props.widget.name}</li>
-                        <li>{this.props.widget.id}</li>
-                        <li>{this.props.widget.type}</li>
-                    </ul>
+                    <h4><strong>Preview</strong></h4>
                 </div>
-            </div>
-
-        )
-    }
-
-}
+            </If>
+            <ul>
+                <li>{widget.name}</li>
+                <li>{widget.id}</li>
+                <li>{widget.type}</li>
+            </ul>
+        </div>
+    </div>
+export default ListWidget

@@ -1,8 +1,6 @@
 import React from 'react'
-import WidgetListItemComponent from './WidgetListItemComponent'
 import HeadingWidget from "./HeadingWidget";
-import {If, Then} from 'react-if'
-import {Switch, Case, Default} from 'react-if'
+import {Switch, Case, If, Else} from 'react-if'
 import ParagraphWidget from "./ParagraphWidget";
 import ListWidget from "./ListWidget";
 import ImageWidget from "./ImageWidget";
@@ -15,7 +13,7 @@ class WidgetListComponent extends React.Component {//({widgets}) =>
     }
 
     state = {
-        editing: false
+        editing: true
     }
     toggleEditing = () =>
         this.setState({
@@ -26,16 +24,21 @@ class WidgetListComponent extends React.Component {//({widgets}) =>
         return (
             <div style={{'padding': '10px'}}>
                 <h1>Widget List {this.props.widgets.length}
-                    {!this.state.editing &&
-                    <button className="btn btn-primary" onClick={this.toggleEditing}>
-                        Edit
-                    </button>
-                    }
-                    {this.state.editing &&
-                    <button className="btn btn-success" onClick={this.toggleEditing}>
-                        Save
-                    </button>
-                    }
+                    <div className="float-right">
+                        <button className="btn btn-success">
+                            Save
+                        </button>
+                        <If condition={this.state.editing}>
+                            <button className="btn btn-primary" onClick={this.toggleEditing}>
+                                Preview
+                            </button>
+                            <Else>
+                                <button className="btn btn-primary" onClick={this.toggleEditing}>
+                                    Edit
+                                </button>
+                            </Else>
+                        </If>
+                    </div>
                 </h1>
                 {
                     this.props.widgets.map(
@@ -45,35 +48,50 @@ class WidgetListComponent extends React.Component {//({widgets}) =>
                                     <HeadingWidget
                                         key={widget.id}
                                         updateWidget={this.props.updateWidget}
+                                        changeWidget={this.props.changeWidget}
                                         widget={widget}
+                                        editMode={this.state.editing}
+                                        widgets={this.props.widgets}
                                         deleteWidget={this.props.deleteWidget}/>
                                 </Case>
                                 <Case condition={widget.type === 'LIST'}>
                                     <ListWidget
                                         key={widget.id}
                                         updateWidget={this.props.updateWidget}
+                                        changeWidget={this.props.changeWidget}
                                         widget={widget}
+                                        widgets={this.props.widgets}
+                                        editMode={this.state.editing}
                                         deleteWidget={this.props.deleteWidget}/>
                                 </Case>
                                 <Case condition={widget.type === 'PARAGRAPH'}>
                                     <ParagraphWidget
                                         key={widget.id}
+                                        changeWidget={this.props.changeWidget}
                                         updateWidget={this.props.updateWidget}
                                         widget={widget}
+                                        widgets={this.props.widgets}
+                                        editMode={this.state.editing}
                                         deleteWidget={this.props.deleteWidget}/>
                                 </Case>
                                 <Case condition={widget.type === 'IMAGE'}>
                                     <ImageWidget
                                         key={widget.id}
+                                        changeWidget={this.props.changeWidget}
                                         updateWidget={this.props.updateWidget}
                                         widget={widget}
+                                        widgets={this.props.widgets}
+                                        editMode={this.state.editing}
                                         deleteWidget={this.props.deleteWidget}/>
                                 </Case>
                                 <Case condition={widget.type === 'LINK'}>
                                     <LinkWidget
                                         key={widget.id}
+                                        changeWidget={this.props.changeWidget}
                                         updateWidget={this.props.updateWidget}
                                         widget={widget}
+                                        widgets={this.props.widgets}
+                                        editMode={this.state.editing}
                                         deleteWidget={this.props.deleteWidget}/>
                                 </Case>
                             </Switch>

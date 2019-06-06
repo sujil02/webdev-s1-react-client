@@ -1,15 +1,18 @@
 import React from 'react'
+import {If, Then} from 'react-if'
 
-export default class HeadingWidget extends React.Component {
-    render() {
-        return (
-            <div>
-                <div className="card widgetCss">
+const HeadingWidget = ({widgets, widget, changeWidget, deleteWidget, editMode}) =>
+    <div>
+        <div className="card widgetCss">
+            <If condition={editMode}>
+                <div>
                     <div className="card-header">
                         <div className="row justify-content-end ml-auto mr-1">
-                            <button className="btn btn-warning" style={{'margin': '0.1em'}}>
-                                <i className="fa fa-arrow-up"></i>
-                            </button>
+                            <If condition={widget.order != 1}>
+                                <button className="btn btn-warning" style={{'margin': '0.1em'}}>
+                                    <i className="fa fa-arrow-up"></i>
+                                </button>
+                            </If>
                             <button className="btn btn-warning" style={{'margin': '0.1em'}}>
                                 <i className="fa fa-arrow-down"></i>
                             </button>
@@ -19,7 +22,7 @@ export default class HeadingWidget extends React.Component {
                                         ...this.props.widget,
                                         type: event.target.value
                                     })}
-                                    value={this.props.widget.type}>
+                                    value={widget.type}>
                                     <option value="HEADING">Heading</option>
                                     <option value="PARAGRAPH">Paragraph</option>
                                     <option value="YOUTUBE">YouTube</option>
@@ -30,7 +33,7 @@ export default class HeadingWidget extends React.Component {
                             </span>
                             <button className="btn btn-danger" style={{'margin': '0.1em'}}
                                     onClick={
-                                        () => this.props.deleteWidget(this.props.widget.id)
+                                        () => deleteWidget(widget.id)
                                     }>
                                 <i className="fa fa-close"></i>
                             </button>
@@ -40,6 +43,13 @@ export default class HeadingWidget extends React.Component {
                         <div className="form-group">
                             <input className="form-control"
                                    placeholder="Heading Widget"
+                                   defaultValue={widget.text}
+                                   onChange={(event) => changeWidget(
+                                       widgets = widgets,
+                                       widget = ({
+                                           ...widget, text: event.target.value
+                                       })
+                                   )}
                             />
                         </div>
                         <div className="form-group">
@@ -50,20 +60,17 @@ export default class HeadingWidget extends React.Component {
                         </div>
                         <div className="form-group">
                             <input className="form-control"
-                                   defaultValue={this.props.widget.name}
+                                   defaultValue={widget.name}
                                    placeholder="Widget Name"/>
                         </div>
                     </form>
-                    <h4>Preview</h4>
-                    <ul>
-                        <li>{this.props.widget.name}</li>
-                        <li>{this.props.widget.id}</li>
-                        <li>{this.props.widget.type}</li>
-                    </ul>
+                    <h4><strong>Preview</strong></h4>
                 </div>
+            </If>
+            <div>
+                <h2>{widget.text}</h2>
             </div>
+        </div>
+    </div>
 
-        )
-    }
-
-}
+export default HeadingWidget

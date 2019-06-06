@@ -1,28 +1,21 @@
 import React from 'react'
+import {If} from "react-if";
 
-export default class ParagraphWidget extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
-    render() {
-        return (
-                <div className="card widgetCss">
-                    <div className="card-header">
-                        <div className="row justify-content-end ml-auto mr-1">
-                            <button className="btn btn-warning" style={{'margin': '0.1em'}}>
-                                <i className="fa fa-arrow-up"></i>
-                            </button>
-                            <button className="btn btn-warning" style={{'margin': '0.1em'}}>
-                                <i className="fa fa-arrow-down"></i>
-                            </button>
-                            <span>
+const ParagraphWidget = ({widgets, widget, changeWidget, deleteWidget, editMode}) =>
+    <div className="card widgetCss">
+        <If condition={editMode}>
+            <div>
+                <div className="card-header">
+                    <div className="row justify-content-end ml-auto mr-1">
+                        <button className="btn btn-warning" style={{'margin': '0.1em'}}>
+                            <i className="fa fa-arrow-up"></i>
+                        </button>
+                        <button className="btn btn-warning" style={{'margin': '0.1em'}}>
+                            <i className="fa fa-arrow-down"></i>
+                        </button>
+                        <span>
                                 <select
-                                    onChange={(event) => this.props.updateWidget({
-                                        ...this.props.widget,
-                                        type: event.target.value
-                                    })}
-                                    value={this.props.widget.type}>
+                                    value={widget.type}>
                                     <option value="HEADING">Heading</option>
                                     <option value="PARAGRAPH">Paragraph</option>
                                     <option value="YOUTUBE">YouTube</option>
@@ -31,33 +24,31 @@ export default class ParagraphWidget extends React.Component {
                                     <option value="IMAGE">Image</option>
                                 </select>
                             </span>
-                            <button className="btn btn-danger" style={{'margin': '0.1em'}}
-                                    onClick={
-                                        () => this.props.deleteWidget(this.props.widget.id)
-                                    }>
-                                <i className="fa fa-close"></i>
-                            </button>
-                        </div>
+                        <button className="btn btn-danger" style={{'margin': '0.1em'}}
+                                onClick={
+                                    () => deleteWidget(widget.id)
+                                }>
+                            <i className="fa fa-close"></i>
+                        </button>
                     </div>
-                    <form>
-                        <div className="form-group">
-                            <textarea className="form-control"
-                                      placeholder="Paragraph Widget"/>
-                        </div>
-                        <div className="form-group">
-                            <input className="form-control"
-                                   placeholder="Widget Name"
-                                   defaultValue={this.props.widget.name}/>
-                        </div>
-                    </form>
-                    <h4>Preview</h4>
-                    <ul>
-                        <li>{this.props.widget.name}</li>
-                        <li>{this.props.widget.id}</li>
-                        <li>{this.props.widget.type}</li>
-                    </ul>
                 </div>
-        )
-    }
-
-}
+                <form>
+                    <div className="form-group">
+                            <textarea className="form-control"
+                                      placeholder="Paragraph Widget"
+                                      defaultValue={widget.text}/>
+                    </div>
+                    <div className="form-group">
+                        <input className="form-control"
+                               placeholder="Widget Name"
+                               defaultValue={widget.name}/>
+                    </div>
+                </form>
+                <h4><strong>Preview</strong></h4>
+            </div>
+        </If>
+        <div>
+            <p>{widget.text}</p>
+        </div>
+    </div>
+export default ParagraphWidget

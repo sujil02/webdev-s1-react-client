@@ -1,4 +1,5 @@
 import widgetService from '../services/WidgetService'
+
 const service = widgetService.getInstance();
 let widgets = service.findAllWidgets();
 
@@ -8,8 +9,12 @@ const widgetReducer = (state = {widgets: []}, action) => {
         case "FIND_ALL_WIDGETS":
         case "DELETE_WIDGET":
         case "UPDATE_WIDGET":
+        case "CHANGE_WIDGET":
+        case "ORDER_WIDGET":
             return {
-                widgets: action.widgets
+                widgets: action.widgets.sort(function (a, b) {
+                    return a.order - b.order
+                })
             }
         default:
             return state;

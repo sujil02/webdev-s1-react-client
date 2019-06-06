@@ -1,34 +1,26 @@
 import React from 'react'
+import {If} from "react-if";
 
-export default class LinkWidget extends React.Component {
-    constructor(props) {
-        super(props);
-        this.linkChanged = this.linkChanged.bind(this);
-    }
-    linkChanged = (event) => {
-        console.log(event.target.value)
-        this.props.widget.srcUrl = event.target.value
-    }
-
-    render() {
-        return (
+const linkWidget = ({widgets, widget, changeWidget, deleteWidget, editMode}) =>
+    <div>
+        <div className="card widgetCss">
+            <If condition={editMode}>
             <div>
-                <div className="card widgetCss">
-                    <div className="card-header">
-                        <div className="row justify-content-end ml-auto mr-1">
-                            <button className="btn btn-warning" style={{'margin': '0.1em'}}>
-                                <i className="fa fa-arrow-up"></i>
-                            </button>
-                            <button className="btn btn-warning" style={{'margin': '0.1em'}}>
-                                <i className="fa fa-arrow-down"></i>
-                            </button>
-                            <span>
+                <div className="card-header">
+                    <div className="row justify-content-end ml-auto mr-1">
+                        <button className="btn btn-warning" style={{'margin': '0.1em'}}>
+                            <i className="fa fa-arrow-up"></i>
+                        </button>
+                        <button className="btn btn-warning" style={{'margin': '0.1em'}}>
+                            <i className="fa fa-arrow-down"></i>
+                        </button>
+                        <span>
                                 <select
                                     onChange={(event) => this.props.updateWidget({
                                         ...this.props.widget,
                                         type: event.target.value
                                     })}
-                                    value={this.props.widget.type}>
+                                    value={widget.type}>
                                     <option value="HEADING">Heading</option>
                                     <option value="PARAGRAPH">Paragraph</option>
                                     <option value="YOUTUBE">YouTube</option>
@@ -37,41 +29,51 @@ export default class LinkWidget extends React.Component {
                                     <option value="IMAGE">Image</option>
                                 </select>
                             </span>
-                            <button className="btn btn-danger" style={{'margin': '0.1em'}}
-                                    onClick={
-                                        () => this.props.deleteWidget(this.props.widget.id)
-                                    }>
-                                <i className="fa fa-close"></i>
-                            </button>
-                        </div>
+                        <button className="btn btn-danger" style={{'margin': '0.1em'}}
+                                onClick={
+                                    () => deleteWidget(widget.id)
+                                }>
+                            <i className="fa fa-close"></i>
+                        </button>
                     </div>
-                    <form>
-                        <div className="form-group">
-                            <input className="form-control"
-                                   placeholder="Link URL"
-                                   defaultValue={this.props.widget.srcUrl}
-                                   onChange={(event) => this.props.updateWidget({
-                                       ...this.props.widget,
-                                       type: event.target.value
-                                   })}/>
-                        </div>
-                        <div className="form-group">
-                            <input className="form-control"
-                                   placeholder="Link text"
-                                   defaultValue={this.props.widget.text}/>
-                        </div>
-                        <div className="form-group">
-                            <input className="form-control"
-                                   placeholder="Widget Name"
-                                   defaultValue={this.props.widget.name}/>
-                        </div>
-                    </form>
-                    <h4>Preview</h4>
-                    <a href={this.props.widget.srcUrl}>Link</a>
                 </div>
+                <form>
+                    <div className="form-group">
+                        <input className="form-control"
+                               placeholder="Link URL"
+                               defaultValue={widget.srcUrl}
+                               onChange={(event) => changeWidget(
+                                   widgets = widgets,
+                                   widget = ({
+                                       ...widget, text: event.target.value
+                                   })
+                               )}
+                        />
+                    </div>
+                    <div className="form-group">
+                        <input className="form-control"
+                               placeholder="Link text"
+                               defaultValue={widget.text}
+                               onChange={(event) => changeWidget(
+                                   widgets = widgets,
+                                   widget = ({
+                                       ...widget, text: event.target.value
+                                   })
+                               )}
+                        />
+                    </div>
+                    <div className="form-group">
+                        <input className="form-control"
+                               placeholder="Widget Name"
+                               defaultValue={widget.name}/>
+                    </div>
+                </form>
+                <h4><strong>Preview</strong></h4>
             </div>
-
-        )
-    }
-
-}
+            </If>
+            <div>
+                <a href={widget.srcUrl}>Click here to checkout the Link</a>
+            </div>
+        </div>
+    </div>
+export default linkWidget

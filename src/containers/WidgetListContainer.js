@@ -2,6 +2,7 @@ import React from 'react'
 import WidgetListComponent from '../components/WidgetListComponent'
 import {connect} from 'react-redux'
 import service from '../services/WidgetService'
+
 const widgetService = service.getInstance()
 
 const stateToPropertyMapper = state => ({
@@ -17,6 +18,21 @@ const propertyToDispatchMapper = dispatch => ({
                     type: 'UPDATE_WIDGET',
                     widgets: widgets
                 })),
+    changeWidget: (widgets, widget) => {
+        widgets = widgets.filter(w => w.id != widget.id)
+        widgets.push(widget)
+        dispatch({
+            type: 'CHANGE_WIDGET',
+            widgets: widgets
+        })
+    },
+    orderWidgets: (widgets) => {
+        widgets = widgets.sort(w => w.order)
+        dispatch({
+            type: 'ORDER_WIDGET',
+            widgets: widgets
+        })
+    },
     deleteWidget: widgetId =>
         widgetService
             .deleteWidget(widgetId)
