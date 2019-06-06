@@ -1,38 +1,21 @@
 import React from 'react'
 import {If} from "react-if";
+import OrderingWidget from "./OrderingWidget";
 
-const ListWidget = ({widgets, widget, changeWidget, deleteWidget, editMode}) =>
+const ListWidget = ({widget, changeWidget, changeWidgetOrder, deleteWidget, editMode}) =>
     <div>
         <div className="card widgetCss">
             <If condition={editMode}>
                 <div>
                     <div className="card-header">
                         <div className="row justify-content-end ml-auto mr-1">
-                            <If condition={widget.order != 0}>
-                                <button className="btn btn-warning" style={{'margin': '0.1em'}}>
-                                    <i className="fa fa-arrow-up"></i>
-                                </button>
-                            </If>
-                            <button className="btn btn-warning" style={{'margin': '0.1em'}}>
-                                <i className="fa fa-arrow-down"></i>
-                            </button>
-                            <span>
-                                <select
-                                    defaultValue={widget.type}>
-                                    <option value="HEADING">Heading</option>
-                                    <option value="PARAGRAPH">Paragraph</option>
-                                    <option value="YOUTUBE">YouTube</option>
-                                    <option value="LIST">List</option>
-                                    <option value="LINK">Link</option>
-                                    <option value="IMAGE">Image</option>
-                                </select>
-                            </span>
-                            <button className="btn btn-danger" style={{'margin': '0.1em'}}
-                                    onClick={
-                                        () => deleteWidget(widget.id)
-                                    }>
-                                <i className="fa fa-close"></i>
-                            </button>
+                            <OrderingWidget
+                                widget={widget}
+                                changeWidgetOrder={changeWidgetOrder}
+                                editMode={editMode}
+                                changeWidget={changeWidget}
+                                deleteWidget={deleteWidget}
+                            />
                         </div>
                     </div>
                     <form>

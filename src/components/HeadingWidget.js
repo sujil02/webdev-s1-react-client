@@ -1,46 +1,21 @@
 import React from 'react'
-import {If, Then} from 'react-if'
+import OrderingWidget from "./OrderingWidget";
+import {If, Else} from 'react-if'
 
-const HeadingWidget = ({ widget, changeWidget, changeWidgetOrder, deleteWidget, editMode}) =>
+const HeadingWidget = ({widget, changeWidget, changeWidgetOrder, deleteWidget, editMode}) =>
     <div>
         <div className="card widgetCss">
             <If condition={editMode}>
                 <div>
                     <div className="card-header">
                         <div className="row justify-content-end ml-auto mr-1">
-                            <If condition={widget.order != 0}>
-                                <button className="btn btn-warning" onClick={
-                                    () => changeWidgetOrder(widget,'INC')
-                                }>
-                                    <i className="fa fa-arrow-up"></i>
-                                </button>
-                            </If>
-                            <button className="btn btn-warning" onClick={
-                                () => changeWidgetOrder(widget,'DEC')
-                            }>
-                                <i className="fa fa-arrow-down"></i>
-                            </button>
-                            <span>
-                                <select
-                                    onChange={(event) => this.props.updateWidget({
-                                        ...this.props.widget,
-                                        type: event.target.value
-                                    })}
-                                    value={widget.type}>
-                                    <option value="HEADING">Heading</option>
-                                    <option value="PARAGRAPH">Paragraph</option>
-                                    <option value="YOUTUBE">YouTube</option>
-                                    <option value="LIST">List</option>
-                                    <option value="LINK">Link</option>
-                                    <option value="IMAGE">Image</option>
-                                </select>
-                            </span>
-                            <button className="btn btn-danger" style={{'margin': '0.1em'}}
-                                    onClick={
-                                        () => deleteWidget(widget.id)
-                                    }>
-                                <i className="fa fa-close"></i>
-                            </button>
+                            <OrderingWidget
+                                widget={widget}
+                                changeWidgetOrder={changeWidgetOrder}
+                                changeWidget = {changeWidget}
+                                editMode={editMode}
+                                deleteWidget={deleteWidget}
+                            />
                         </div>
                     </div>
                     <form>
@@ -56,22 +31,38 @@ const HeadingWidget = ({ widget, changeWidget, changeWidgetOrder, deleteWidget, 
                             />
                         </div>
                         <div className="form-group">
-                            <select className="form-control">
-                                <option>Heading 1</option>
-                                <option>Heading 2</option>
+                            <select className="form-control"
+                                    onChange={(event) => changeWidget(
+                                        widget = ({
+                                            ...widget, cssClass: event.target.value
+                                        })
+                                    )}
+                                    defaultValue={widget.cssClass}>
+                                <option value="H1">Heading 1</option>
+                                <option value="H2">Heading 2</option>
                             </select>
                         </div>
                         <div className="form-group">
                             <input className="form-control"
                                    defaultValue={widget.name}
-                                   placeholder="Widget Name"/>
+                                   placeholder="Widget Name"
+                                   onChange={(event) => changeWidget(
+                                       widget = ({
+                                           ...widget, name: event.target.value
+                                       })
+                                   )}/>
                         </div>
                     </form>
                     <h4><strong>Preview</strong></h4>
                 </div>
             </If>
             <div>
-                <h2>{widget.text}</h2>
+                <If condition={widget.cssClass === "H2"}>
+                    <h2>{widget.text}</h2>
+                    <Else>
+                        <h1>{widget.text}</h1>
+                    </Else>
+                </If>
             </div>
         </div>
     </div>

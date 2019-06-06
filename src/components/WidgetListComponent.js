@@ -58,7 +58,6 @@ class WidgetListComponent extends React.Component {//({widgets}) =>
                                         changeWidgetOrder={this.changeWidgetOrder}
                                         widget={widget}
                                         editMode={this.state.editing}
-                                        widgets={this.props.widgets}
                                         deleteWidget={this.props.deleteWidget}/>
                                 </Case>
                                 <Case condition={widget.type === 'LIST'}>
@@ -66,38 +65,38 @@ class WidgetListComponent extends React.Component {//({widgets}) =>
                                         key={widget.id}
                                         updateWidget={this.props.updateWidget}
                                         changeWidget={this.changeWidget}
+                                        changeWidgetOrder={this.changeWidgetOrder}
                                         widget={widget}
-                                        widgets={this.props.widgets}
                                         editMode={this.state.editing}
                                         deleteWidget={this.props.deleteWidget}/>
                                 </Case>
                                 <Case condition={widget.type === 'PARAGRAPH'}>
                                     <ParagraphWidget
                                         key={widget.id}
-                                        changeWidget={this.changeWidget}
                                         updateWidget={this.props.updateWidget}
+                                        changeWidget={this.changeWidget}
+                                        changeWidgetOrder={this.changeWidgetOrder}
                                         widget={widget}
-                                        widgets={this.props.widgets}
                                         editMode={this.state.editing}
                                         deleteWidget={this.props.deleteWidget}/>
                                 </Case>
                                 <Case condition={widget.type === 'IMAGE'}>
                                     <ImageWidget
                                         key={widget.id}
-                                        changeWidget={this.props.changeWidget}
                                         updateWidget={this.props.updateWidget}
+                                        changeWidget={this.changeWidget}
+                                        changeWidgetOrder={this.changeWidgetOrder}
                                         widget={widget}
-                                        widgets={this.props.widgets}
                                         editMode={this.state.editing}
                                         deleteWidget={this.props.deleteWidget}/>
                                 </Case>
                                 <Case condition={widget.type === 'LINK'}>
                                     <LinkWidget
                                         key={widget.id}
-                                        changeWidget={this.props.changeWidget}
                                         updateWidget={this.props.updateWidget}
+                                        changeWidget={this.changeWidget}
+                                        changeWidgetOrder={this.changeWidgetOrder}
                                         widget={widget}
-                                        widgets={this.props.widgets}
                                         editMode={this.state.editing}
                                         deleteWidget={this.props.deleteWidget}/>
                                 </Case>

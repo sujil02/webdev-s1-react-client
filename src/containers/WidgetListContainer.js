@@ -33,15 +33,17 @@ const propertyToDispatchMapper = dispatch => ({
                 currentIndex = index
             }
         })
-        if (type === 'DEC') {
-            let currentOrder = widgets[currentIndex].order
-            widgets[currentIndex].order = widgets[currentIndex + 1].order
-            widgets[currentIndex + 1].order = currentOrder
-        }
         if (type === 'INC') {
             let currentOrder = widgets[currentIndex].order
             widgets[currentIndex].order = widgets[currentIndex - 1].order
             widgets[currentIndex - 1].order = currentOrder
+        } else if (type === 'DEC' && currentIndex != widgets.length - 1) {
+            let currentOrder = widgets[currentIndex].order
+            widgets[currentIndex].order = widgets[currentIndex + 1].order
+            if (currentIndex != 0)
+                widgets[currentIndex + 1].order = currentOrder
+            else
+                widgets[currentIndex + 1].order = 0
         }
         widgets = widgets.filter(w => w.id != widget.id)
         widgets.push(widget)
