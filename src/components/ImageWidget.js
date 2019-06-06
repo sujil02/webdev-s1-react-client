@@ -21,9 +21,10 @@ const imageWidget = ({widget, changeWidget, changeWidgetOrder, deleteWidget, edi
                     <div className="form-group">
                         <input className="form-control"
                                placeholder="Image Widget"
+                               defaultValue={widget.srcUrl}
                                onChange={(event) => changeWidget(
                                    widget = ({
-                                       ...widget, text: event.target.value
+                                       ...widget, srcUrl: event.target.value
                                    })
                                )}
                         />
@@ -36,6 +37,6 @@ const imageWidget = ({widget, changeWidget, changeWidgetOrder, deleteWidget, edi
 
             </div>
         </If>
-        <img src="https://picsum.photos/300/200"/>
+        <img src={widget.srcUrl}/>
     </div>
 export default imageWidget

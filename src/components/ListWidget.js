@@ -31,7 +31,13 @@ const ListWidget = ({widget, changeWidget, changeWidgetOrder, deleteWidget, edit
                         <div className="form-group">
                             <input className="form-control"
                                    placeholder="Widget Name"
-                                   defaultValue={widget.name}/>
+                                   defaultValue={widget.name}
+                                   onChange={(event) => changeWidget(
+                                       widget = ({
+                                           ...widget, name: event.target.value
+                                       })
+                                   )}
+                            />
                         </div>
                     </form>
                     <h4><strong>Preview</strong></h4>

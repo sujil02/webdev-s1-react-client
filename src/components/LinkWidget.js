@@ -24,7 +24,7 @@ const linkWidget = ({widget, changeWidget, changeWidgetOrder, deleteWidget, edit
                                defaultValue={widget.srcUrl}
                                onChange={(event) => changeWidget(
                                    widget = ({
-                                       ...widget, text: event.target.value
+                                       ...widget, srcUrl: event.target.value
                                    })
                                )}
                         />

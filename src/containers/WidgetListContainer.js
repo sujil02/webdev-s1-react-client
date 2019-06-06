@@ -10,6 +10,16 @@ const stateToPropertyMapper = state => ({
 })
 
 const propertyToDispatchMapper = dispatch => ({
+
+    saveAllWidgets: (newWidgets) => {
+        newWidgets.forEach(function (w) {
+            this.updateWidget(w)
+        })
+        dispatch({
+            type: 'ORDER_WIDGET',
+            widgets: newWidgets
+        })
+    },
     updateWidget: newWidget =>
         widgetService
             .updateWidget(newWidget)

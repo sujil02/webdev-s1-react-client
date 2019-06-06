@@ -1,4 +1,3 @@
-import widgets from './widgets.json'
 
 export default class WidgetService {
     static myInstance = null;
@@ -26,7 +25,7 @@ export default class WidgetService {
             .then(response => response.json())
 
     findWidgetById = widgetId => {
-        return widgets.find(widget => widget.id == widgetId)
+        return this.findAllWidgets.find(widget => widget.id == widgetId)
     }
     deleteWidget = widgetId =>
         fetch(`http://localhost:8080/api/widgets/${widgetId}`, {
@@ -43,4 +42,11 @@ export default class WidgetService {
             }
         })
             .then(response => response.json())
+
+    saveAllWidgets = widgets => {
+        widgets.forEach(function (w) {
+            this.updateWidget(w)
+        })
+    }
+
 }

@@ -31,7 +31,10 @@ class WidgetListComponent extends React.Component {//({widgets}) =>
             <div style={{'padding': '10px'}}>
                 <h1>Widget List {this.props.widgets.length}
                     <div className="float-right">
-                        <button className="btn btn-success">
+                        <button className="btn btn-success"
+                                onClick={(event) => this.props.saveAllWidgets({
+                                    ...this.props.widgets,
+                                })}>
                             Save
                         </button>
                         <If condition={this.state.editing}>
