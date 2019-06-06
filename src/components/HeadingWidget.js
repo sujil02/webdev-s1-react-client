@@ -40,6 +40,7 @@ const HeadingWidget = ({widget, changeWidget, changeWidgetOrder, deleteWidget, e
                                     defaultValue={widget.cssClass}>
                                 <option value="H1">Heading 1</option>
                                 <option value="H2">Heading 2</option>
+                                <option value="H3">Heading 3</option>
                             </select>
                         </div>
                         <div className="form-group">

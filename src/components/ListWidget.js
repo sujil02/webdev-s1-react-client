@@ -20,12 +20,25 @@ const ListWidget = ({widget, changeWidget, changeWidgetOrder, deleteWidget, edit
                     </div>
                     <form>
                         <div className="form-group">
-                            <textarea className="form-control" placeholder="List Widget"/>
+                            <textarea className="form-control"
+                                      placeholder="List Widget"
+                                      defaultValue={widget.text}
+                                      onChange={(event) => changeWidget(
+                                          widget = ({
+                                              ...widget, text: event.target.value
+                                          })
+                                      )}
+                            />
                         </div>
                         <div className="form-group">
-                            <select className="form-control">
-                                <option>Unordered list</option>
-                                <option>Ordered list</option>
+                            <select className="form-control"
+                                    onChange={(event) => changeWidget(
+                                        widget = ({
+                                            ...widget, cssClass: event.target.value
+                                        })
+                                    )}>
+                                <option value="UNORDERED">Unordered list</option>
+                                <option value="ORDERED">Ordered list</option>
                             </select>
                         </div>
                         <div className="form-group">
@@ -43,11 +56,38 @@ const ListWidget = ({widget, changeWidget, changeWidgetOrder, deleteWidget, edit
                     <h4><strong>Preview</strong></h4>
                 </div>
             </If>
-            <ul>
-                <li>{widget.name}</li>
-                <li>{widget.id}</li>
-                <li>{widget.type}</li>
-            </ul>
+            <div>
+                {getList(widget)}
+            </div>
         </div>
     </div>
 export default ListWidget
+
+const getList = (widget) => {
+    var list_text_array = widget.text.split("\n");
+    console.log(widget.cssClass)
+
+    switch (widget.cssClass.toString()) {
+        case "UNORDERED":
+            return (
+                <ul>
+                    {list_text_array
+                        .map((list_item, index) => {
+                            return <li className="nav-item" key={index}>
+                                {list_item}
+                            </li>
+                        })}
+                </ul>)
+        break
+        case "ORDERED":
+            return (
+                <ol>
+                    {list_text_array
+                        .map((list_item, index) => {
+                            return <li className="nav-item" key={index}>
+                                {list_item}
+                            </li>
+                        })}
+                </ol>)
+    }
+}

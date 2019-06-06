@@ -11,14 +11,15 @@ const stateToPropertyMapper = state => ({
 
 const propertyToDispatchMapper = dispatch => ({
 
-    saveAllWidgets: (newWidgets) => {
-        newWidgets.forEach(function (w) {
-            this.updateWidget(w)
-        })
-        dispatch({
-            type: 'ORDER_WIDGET',
-            widgets: newWidgets
-        })
+    saveAllWidgets: widgets => {
+        Array.from(widgets)
+        widgetService
+            .saveAllWidgets(widgets)
+            .then(widgets =>
+                dispatch({
+                    type: 'SAVE_ALL_WIDGETS',
+                    widgets: widgets
+                }))
     },
     updateWidget: newWidget =>
         widgetService
@@ -46,7 +47,10 @@ const propertyToDispatchMapper = dispatch => ({
         if (type === 'INC') {
             let currentOrder = widgets[currentIndex].order
             widgets[currentIndex].order = widgets[currentIndex - 1].order
-            widgets[currentIndex - 1].order = currentOrder
+            if (currentIndex != widgets.length - 1)
+                widgets[currentIndex - 1].order = currentOrder
+            else
+                widgets[currentIndex - 1].order = 100000
         } else if (type === 'DEC' && currentIndex != widgets.length - 1) {
             let currentOrder = widgets[currentIndex].order
             widgets[currentIndex].order = widgets[currentIndex + 1].order

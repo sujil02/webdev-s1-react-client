@@ -1,4 +1,3 @@
-
 export default class WidgetService {
     static myInstance = null;
 
@@ -9,6 +8,16 @@ export default class WidgetService {
         }
         return this.myInstance;
     }
+
+    saveAllWidgets = (widgets) =>
+        fetch(`http://localhost:8080/api/widgets`, {
+            method: 'PUT',
+            body: JSON.stringify(widgets),
+            headers: {
+                'content-type': 'application/json'
+            }
+        })
+            .then(response => response.json())
 
     createWidget = widget =>
         fetch("http://localhost:8080/api/widgets", {
@@ -42,11 +51,4 @@ export default class WidgetService {
             }
         })
             .then(response => response.json())
-
-    saveAllWidgets = widgets => {
-        widgets.forEach(function (w) {
-            this.updateWidget(w)
-        })
-    }
-
 }

@@ -10,11 +10,13 @@ const orderingWidget = ({widget, changeWidgetOrder, changeWidget, deleteWidget})
                 <i className="fa fa-arrow-up"></i>
             </button>
         </If>
+        <If condition={widget.order != 100000}>
         <button className="btn btn-warning" onClick={
             () => changeWidgetOrder(widget, 'DEC')
         }>
             <i className="fa fa-arrow-down"></i>
         </button>
+        </If>
         <span>
             <select
                 onChange={(event) => changeWidget({
