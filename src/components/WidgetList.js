@@ -60,16 +60,7 @@ class WidgetList extends React.Component {
                     deleteWidget={this.props.deleteWidget}
                 />
 
-                <div className="row justify-content-end">
-                    <button className="btn btn-danger" onClick={
-                        () => {
-                            var last_element = this.props.widgets[this.props.widgets.length - 1];
-                            this.props.createWidget(last_element.order)
-                        }
-                    }>
-                        <i className="fa fa-plus-circle"></i>
-                    </button>
-                </div>
+
             </div>
         )
     }
