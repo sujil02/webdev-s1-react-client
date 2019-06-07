@@ -74,20 +74,21 @@ const propertyToDispatchMapper = dispatch => ({
                     type: 'DELETE_WIDGET',
                     widgets: widgets
                 })),
-    createWidget: (widgetListLength) =>
+    createWidget: (widgets, widgetListLength) => {
         widgetService
             .createWidget({
                 id: (new Date()).getTime(),
                 name: 'New Widget',
                 type: 'HEADING',
                 text: 'New Widget',
-                order: widgetListLength + 1
+                cssClass: '1'
             })
             .then(widgets =>
                 dispatch({
                     type: 'CREATE_WIDGET',
                     widgets: widgets
-                })),
+                }))
+    },
     findAllWidgets: () =>
         widgetService
             .findAllWidgets()

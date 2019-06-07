@@ -58,7 +58,7 @@ const linkWidget = ({widget, changeWidget, changeWidgetOrder, deleteWidget, edit
             </div>
             </If>
             <div>
-                <a href={widget.srcUrl}>Link Text</a>
+                <a href={widget.srcUrl}>{widget.text}</a>
             </div>
         </div>
     </div>

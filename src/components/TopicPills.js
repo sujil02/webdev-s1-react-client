@@ -36,7 +36,6 @@ export default class TopicPills extends React.Component {
 
     }
     titleChanged = (event) => {
-        console.log(event.target.value)
         this.setState({
             topic: {
                 title: event.target.value,

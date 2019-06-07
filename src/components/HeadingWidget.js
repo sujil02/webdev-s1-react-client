@@ -2,6 +2,25 @@ import React from 'react'
 import OrderingWidget from "./OrderingWidget";
 import {If, Else} from 'react-if'
 
+const getHeading = (widget) =>
+{
+    switch (widget.cssClass) {
+        case "1":
+            return (<h1>{widget.text}</h1>)
+        case "2":
+            return (<h2>{widget.text}</h2>)
+        case "3":
+            return (<h3>{widget.text}</h3>)
+        case "4":
+            return (<h4>{widget.text}</h4>)
+        case "5":
+            return (<h5>{widget.text}</h5>)
+        case "6":
+            return (<h6>{widget.text}</h6>)
+
+    }
+
+}
 const HeadingWidget = ({widget, changeWidget, changeWidgetOrder, deleteWidget, editMode}) =>
     <div>
         <div className="card widgetCss">
@@ -12,7 +31,7 @@ const HeadingWidget = ({widget, changeWidget, changeWidgetOrder, deleteWidget, e
                             <OrderingWidget
                                 widget={widget}
                                 changeWidgetOrder={changeWidgetOrder}
-                                changeWidget = {changeWidget}
+                                changeWidget={changeWidget}
                                 editMode={editMode}
                                 deleteWidget={deleteWidget}
                             />
@@ -23,7 +42,7 @@ const HeadingWidget = ({widget, changeWidget, changeWidgetOrder, deleteWidget, e
                         <div className="form-group">
                             <input className="form-control"
                                    placeholder="Heading Widget"
-                                   defaultValue={widget.text}
+                                   value={widget.text}
                                    onChange={(event) => changeWidget(
                                        widget = ({
                                            ...widget, text: event.target.value
@@ -39,9 +58,12 @@ const HeadingWidget = ({widget, changeWidget, changeWidgetOrder, deleteWidget, e
                                         })
                                     )}
                                     defaultValue={widget.cssClass}>
-                                <option value="H1">Heading 1</option>
-                                <option value="H2">Heading 2</option>
-                                <option value="H3">Heading 3</option>
+                                <option value="1">Heading 1</option>
+                                <option value="2">Heading 2</option>
+                                <option value="3">Heading 3</option>
+                                <option value="4">Heading 4</option>
+                                <option value="5">Heading 5</option>
+                                <option value="6">Heading 6</option>
                             </select>
                         </div>
                         <div className="form-group">
@@ -59,14 +81,9 @@ const HeadingWidget = ({widget, changeWidget, changeWidgetOrder, deleteWidget, e
                 </div>
             </If>
             <div>
-                <If condition={widget.cssClass === "H2"}>
-                    <h2>{widget.text}</h2>
-                    <Else>
-                        <h1>{widget.text}</h1>
-                    </Else>
-                </If>
+                {getHeading(widget)}
             </div>
         </div>
-    </div>
+        < /div>
 
-export default HeadingWidget
+            export default HeadingWidget

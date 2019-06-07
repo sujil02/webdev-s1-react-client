@@ -33,9 +33,12 @@ class WidgetList extends React.Component {
                 <h1>Widget List {this.props.widgets.length}
                     <div className="float-right">
                         <button className="btn btn-success"
-                                onClick={(event) => this.props.saveAllWidgets(
-                                    this.props.widgets
-                                )}>
+                                onClick={(event) => {
+                                    window.alert("Changes saved Successfully.")
+                                    this.props.saveAllWidgets(
+                                        this.props.widgets
+                                    )
+                                }}>
                             Save
                         </button>
                         <If condition={this.state.editing}>
