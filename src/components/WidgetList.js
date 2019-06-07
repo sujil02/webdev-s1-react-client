@@ -14,7 +14,7 @@ class WidgetList extends React.Component {
     }
 
     state = {
-        editing: true
+        editing: false
     }
     toggleEditing = () =>
         this.setState({
