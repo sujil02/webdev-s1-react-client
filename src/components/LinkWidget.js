@@ -23,10 +23,10 @@ const linkWidget = ({widget, changeWidget, changeWidgetOrder, deleteWidget, edit
                     <div className="form-group">
                         <input className="form-control"
                                placeholder="Link URL"
-                               defaultValue={widget.srcUrl}
+                               defaultValue={widget.href}
                                onChange={(event) => changeWidget(
                                    widget = ({
-                                       ...widget, srcUrl: event.target.value
+                                       ...widget, href: event.target.value
                                    })
                                )}
                         />
@@ -58,7 +58,7 @@ const linkWidget = ({widget, changeWidget, changeWidgetOrder, deleteWidget, edit
             </div>
             </If>
             <div>
-                <a href={widget.srcUrl}>{widget.text}</a>
+                <a href={widget.href}>{widget.text}</a>
             </div>
         </div>
     </div>

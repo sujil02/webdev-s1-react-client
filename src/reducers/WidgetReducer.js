@@ -14,7 +14,7 @@ const widgetReducer = (state = {widgets: []}, action) => {
         case "ORDER_WIDGET":
             return {
                 widgets: action.widgets.sort(function (a, b) {
-                    return a.order - b.order
+                    return a.widgetOrder - b.widgetOrder
                 })
             }
         default:

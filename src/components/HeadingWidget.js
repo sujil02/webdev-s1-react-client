@@ -4,7 +4,7 @@ import {If, Else} from 'react-if'
 
 const getHeading = (widget) =>
 {
-    switch (widget.cssClass) {
+    switch (widget.size.toString()) {
         case "1":
             return (<h1>{widget.text}</h1>)
         case "2":
@@ -54,10 +54,10 @@ const HeadingWidget = ({widget, changeWidget, changeWidgetOrder, deleteWidget, e
                             <select className="form-control"
                                     onChange={(event) => changeWidget(
                                         widget = ({
-                                            ...widget, cssClass: event.target.value
+                                            ...widget, size: event.target.value
                                         })
                                     )}
-                                    defaultValue={widget.cssClass}>
+                                    defaultValue={widget.size}>
                                 <option value="1">Heading 1</option>
                                 <option value="2">Heading 2</option>
                                 <option value="3">Heading 3</option>
