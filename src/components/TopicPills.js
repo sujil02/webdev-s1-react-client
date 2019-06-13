@@ -69,7 +69,6 @@ export default class TopicPills extends React.Component {
         this.state.lessonId = paths[4]
         this.state.topicId = paths[5]
         this.state.widgetId = paths[6]
-        this.state.lesson = courseService.findLesson(this.state.courseId,this.state.moduleId, this.state.lessonId)
     }
   render() {
       return(
@@ -77,7 +76,7 @@ export default class TopicPills extends React.Component {
               {this.componentUpdate()}
               <ul className="nav nav-pills">
                   {
-                      this.state.lesson.topics.map(
+                      this.props.lesson.topics.map(
                           topic =>
                               <Topic
                                   courseId={this.state.courseId}

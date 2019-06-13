@@ -53,10 +53,10 @@ export default class Whiteboard extends React.Component {
                                     render={(props) => <CourseEditor {...props} courses={this.courses}/>}/>
                                 <Route
                                     exact path="/course-editor/:courseId"
-                                    render={props => <CourseEditor courses={this.courses}/>}/>
+                                    render={props => <CourseEditor {...props}  courses={this.courses}/>}/>
                                 <Route
                                     exact path="/course-editor/:courseId/:moduleId"
-                                    render={props => <CourseEditor courses={this.courses}/>}/>
+                                    render={props => <CourseEditor {...props}  courses={this.courses}/>}/>
                             </div>
                         </div>
                     </div>

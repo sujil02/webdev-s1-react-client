@@ -69,7 +69,7 @@ const WidgetListComponent = ({widgets, createWidget, changeWidget, changeWidgetO
             <button className="btn btn-danger" onClick={
                 () => {
                     var last_element = widgets[widgets.length - 1];
-                    createWidget(widgets,last_element.order)
+                    createWidget(widgets,last_element.widgetOrder)
                 }
             }>
                 <i className="fa fa-plus-circle"></i>

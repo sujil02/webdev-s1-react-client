@@ -81,7 +81,7 @@ const propertyToDispatchMapper = dispatch => ({
                 name: 'New Widget',
                 type: 'HEADING',
                 text: 'New Widget',
-                cssClass: '1'
+                size: '1'
             })
             .then(widgets =>
                 dispatch({

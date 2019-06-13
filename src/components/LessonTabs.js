@@ -21,7 +21,7 @@ export default class LessonTabs extends React.Component {
             moduleId: moduleId,
             modules: props.modules,
             courseId: props.courseId,
-            lessons: props.lessons
+            lessons: []
 
         }
     }
@@ -49,9 +49,6 @@ export default class LessonTabs extends React.Component {
         this.state.moduleId = paths[3]
         this.state.lessonId = paths[4]
         this.state.topicId = paths[5]
-        this.state.course = courseService.findAllCourses().find(course => course.id == this.courseId)
-        this.state.modules = this.findModule(this.state.moduleId)
-        this.state.lessons = this.findLesson(this.state.moduleId, this.state.lessonId)
     }
     titleChanged = (event) => {
         console.log(event.target.value)
@@ -81,13 +78,13 @@ export default class LessonTabs extends React.Component {
                 <h3>Lesson Tabs</h3>
                 <ul className="nav nav-tabs">
                     {
-                        this.state.modules.lessons.map(
+                        this.props.lessons.map(
                             lesson =>
                                 <Lesson
                                     courseId={this.props.courseId}
                                     deleteLesson={this.deleteLesson}
                                     updateLesson={this.updateLesson}
-                                    moduleId = {this.props.moduleId}
+                                    moduleId = {this.state.moduleId}
                                     lessonId={this.state.lessonId}
                                     lesson={lesson}
                                     key={lesson.id}/>

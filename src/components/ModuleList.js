@@ -68,12 +68,12 @@ export default class ModuleList
                   onChange={this.titleChanged}
                   defaultValue={this.state.module.title}
                   className="form-control"/>
-              <button onClick={this.createModule} className="btn btn-primary btn-block">
+              <button onClick={()=>this.createModule} className="btn btn-primary btn-block">
                 Add Module
               </button>
             </li>
             {
-                this.state.modules.map(
+                this.props.modules.map(
                   module =>
                       <ModuleItem
                           courseId={this.state.courseId}

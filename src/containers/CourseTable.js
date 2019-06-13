@@ -12,11 +12,10 @@ export default class CourseTable
         const courses = props.courses
         this.state= {
             course:{
-                id: -1,
                 title: 'New Course',
                 modules: []
             },
-            courses : props.courses
+            courses : []
         }
     }
     titleChanged = (event) => {
@@ -30,11 +29,9 @@ export default class CourseTable
         })
     }
     createCourse = () => {
-        this.state.course.id = (new Date()).getTime()
-        this.setState({
-            courses: [this.state.course, ...this.state.courses]
-        })
-        courseService.addCourse(this.state.course)
+        courseService.addCourse(this.state.course).then(result =>this.setState({
+            courses : result
+        }))
     }
     deleteCourse = (id) => {
         this.setState({
@@ -47,16 +44,20 @@ export default class CourseTable
             courses: courseService.updateCourse(course.id,  window.prompt("Please enter new course title"))
         })
     }
-    componentUpdate =()=> {
+    componentWillMount() {
         const pathname = window.location.pathname
         const paths = pathname.split('/')
-        this.state.moduleId = paths[1]
-        this.state.courses = courseService.findAllCourses()
+        courseService.findAllCourses().then(result =>this.setState({
+            courses : result,
+            moduleId : paths[1]
+        }))
     }
+
+
     render() {
         return(
                 <div className="main">
-                    {this.componentUpdate()}
+                    {/*{this.componentUpdate()}*/}
                     <div className="course-manger-tag">
                         <div className="row align-items-center">
                             <div className="col d-none d-md-inline-block">
