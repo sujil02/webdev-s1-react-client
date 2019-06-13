@@ -6,7 +6,7 @@ const ModuleItem = ({courseId, module, moduleId,updateModule,deleteModule}) =>
         {module.id==moduleId ? (
             <li className="list-group-item active">
                 <Link className="active" to={`/course-editor/${courseId}/${module.id}/dummy`}>{module.title}</Link>
-                <button onClick={() => updateModule(module.id)}
+                <button onClick={() => updateModule(module)}
                         className="fa fa-pencil float-right"></button>
                 <Link onClick={() => deleteModule(module.id)}
                       to={`/course-editor/${courseId}/${module.id}`}
@@ -15,7 +15,7 @@ const ModuleItem = ({courseId, module, moduleId,updateModule,deleteModule}) =>
         ) : (
             <li className="list-group-item">
                 <Link to={`/course-editor/${courseId}/${module.id}/dummy`}>{module.title}</Link>
-                <button onClick={() => updateModule(module.id)}
+                <button onClick={() => updateModule(module)}
                         className="fa fa-pencil float-right"></button>
                 <Link onClick={() => deleteModule(module.id)}
                       to={`/course-editor/${courseId}/${module.id}`}

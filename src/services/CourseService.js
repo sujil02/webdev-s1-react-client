@@ -16,13 +16,13 @@ export default class CourseService {
         this.courses.push(course)
     }
     findAllCourses = () =>
-        fetch("http://localhost:8080/api/courses")
+        fetch("https://webdev-s1-sujil-server-java.herokuapp.com/api/courses")
             .then(response => response.json())
     findCourseById = (courseID) =>
-        fetch(`http://localhost:8080/api/courses/${courseID}`)
+        fetch(`https://webdev-s1-sujil-server-java.herokuapp.com/api/courses/${courseID}`)
             .then(response => response.json())
     findAllModules = (courseId) =>
-        fetch(`http://localhost:8080/api/courses/${courseId}/modules`)
+        fetch(`https://webdev-s1-sujil-server-java.herokuapp.com/api/courses/${courseId}/modules`)
             .then(response => response.json())
 
     findLesson = (courseId, moduleId, lessonId) => {
@@ -42,12 +42,7 @@ export default class CourseService {
         Following are the add methods used to edit the course object.
      */
     addCourse = (course) => {
-        // const myArrayString = JSON.stringify(this.courses)
-        // let m = JSON.parse(myArrayString)
-        // m.push(course)
-        // this.courses = m;
-        // return m;
-        return fetch("http://localhost:8080/api/courses", {
+        return fetch("https://webdev-s1-sujil-server-java.herokuapp.com/api/courses", {
             method: 'POST',
             body: JSON.stringify(course),
             headers: {
@@ -57,20 +52,7 @@ export default class CourseService {
             .then(response => response.json())
     }
     addModule = (courseId, module) => {
-        // let index1
-        // let course
-        // this.courses.forEach(function (c, index) {
-        //     if (c.id == courseId) {
-        //         index1 = index
-        //         course = c
-        //     }
-        // })
-        // const myArrayString = JSON.stringify(course.modules)
-        // let m = JSON.parse(myArrayString)
-        // m.push(module)
-        // this.courses[index1].modules = m;
-        // return m;
-        return fetch(`http://localhost:8080/api/courses/${courseId}/modules`, {
+        return fetch(`https://webdev-s1-sujil-server-java.herokuapp.com/api/courses/${courseId}/modules`, {
             method: 'POST',
             body: JSON.stringify(module),
             headers: {
@@ -135,14 +117,14 @@ export default class CourseService {
         Following are the add methods used to edit the course object.
     */
     deleteCourse = (courseId) => {
-        return fetch(`http://localhost:8080/api/courses/${courseId}`, {
+        return fetch(`https://webdev-s1-sujil-server-java.herokuapp.com/api/courses/${courseId}`, {
             method: 'DELETE'
         })
             .then(response => response.json())
     }
 
     deleteModule = (courseId, moduleId) => {
-        return fetch(`http://localhost:8080/api/courses/${courseId}/modules/${moduleId}`, {
+        return fetch(`https://webdev-s1-sujil-server-java.herokuapp.com/api/courses/${courseId}/modules/${moduleId}`, {
             method: 'DELETE'
         })
             .then(response => response.json())
@@ -178,17 +160,7 @@ export default class CourseService {
         Following are the update methods used to alter the course object.
     */
     updateCourse = (courseId, course) => {
-        // let index1
-        // let course
-        // this.courses.forEach(function (c, index) {
-        //     if (c.id == courseId) {
-        //         index1 = index
-        //         course = c
-        //     }
-        // })
-        // course.title = title
-        // return courses;
-        return fetch(`http://localhost:8080/api/courses/${courseId}`, {
+        return fetch(`https://webdev-s1-sujil-server-java.herokuapp.com/api/courses/${courseId}`, {
             method: 'PUT',
             body: JSON.stringify(course),
             headers: {
@@ -198,18 +170,16 @@ export default class CourseService {
             .then(response => response.json())
     }
 
-    updateModule = (courseId, moduleId, title) => {
-        let index1
-        let course
-        this.courses.forEach(function (c, index) {
-            if (c.id == courseId) {
-                index1 = index
-                course = c
+    updateModule = (courseId, moduleId, module) => {
+        return fetch(`https://webdev-s1-sujil-server-java.herokuapp.com/api/courses/${courseId}/modules`, {
+            method: 'PUT',
+            body: JSON.stringify(module),
+            headers: {
+                'content-type': 'application/json'
             }
         })
-        let module = course.modules.find(module => module.id == moduleId)
-        module.title = title
-        return course.modules;
+            .then(response => response.json())
+
     }
 
     updateLesson = (courseId, moduleId, lessonId, title) => {

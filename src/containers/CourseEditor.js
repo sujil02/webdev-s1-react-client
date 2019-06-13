@@ -98,7 +98,7 @@ export default class CourseEditor
                 <LessonTabs courseId={this.state.courseId}
                             moduleId={this.state.moduleId}
                             lessonId={this.state.moduleId}
-                            lessons={this.findModule(this.props.match.params.moduleId).lessons}
+                            lessons={this.findModule(this.state.moduleId).lessons}
                 />
             )
         }

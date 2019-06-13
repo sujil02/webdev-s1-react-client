@@ -17,7 +17,7 @@ export default class ModuleList
                 title: 'New Module',
                 lessons: []
             },
-            modules: props.modules,
+            modules: [],
             moduleId: this.moduleId,
             courseId: props.courseId
         }
@@ -39,10 +39,6 @@ export default class ModuleList
         })
     }
     deleteModule = (id) => {
-        // this.setState({
-        //     modules: this.state.modules.filter(module => module.id !== id)
-        // })
-        // courseService.deleteModule(this.state.courseId, id)
         courseService.deleteModule(this.state.courseId, id).then(result => this.setState({
             modules: result
         }))
@@ -52,24 +48,26 @@ export default class ModuleList
             modules: result
         }))
     }
-    updateModule = (id) => {
-        let title = window.prompt("Please enter new module title");
-        this.setState({
-            modules: courseService.updateModule(this.state.courseId, id, title)
-        })
+    updateModule = (module) => {
+        module.title = window.prompt("Please enter new module title");
+        courseService.updateModule(this.state.courseId, module.id, module).then(result => this.setState({
+            modules: result
+        }))
     }
     componentUpdate = () => {
         const pathname = window.location.pathname
         const paths = pathname.split('/')
         this.state.moduleId = paths[3]
     }
-    // componentDidMount() {
-    //     const pathname = window.location.pathname
-    //     const paths = pathname.split('/')
-    //     courseService.findAllModules(paths[2]).then(result => this.setState({
-    //         modules: result
-    //     }))
-    // }
+
+    componentWillMount() {
+        const pathname = window.location.pathname
+        const paths = pathname.split('/')
+        courseService.findAllModules(paths[2]).then(result => this.setState({
+            modules: result
+        }))
+    }
+
     render() {
         return (
             <div className="container">
