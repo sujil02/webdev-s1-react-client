@@ -47,17 +47,12 @@ const propertyToDispatchMapper = dispatch => ({
         if (type === 'INC') {
             let currentOrder = widgets[currentIndex].widgetOrder
             widgets[currentIndex].widgetOrder = widgets[currentIndex - 1].widgetOrder
-            if (currentIndex != widgets.length - 1)
-                widgets[currentIndex - 1].widgetOrder = currentOrder
-            else
-                widgets[currentIndex - 1].widgetOrder = 100000
+            widgets[currentIndex - 1].widgetOrder = currentOrder
+
         } else if (type === 'DEC' && currentIndex != widgets.length - 1) {
             let currentOrder = widgets[currentIndex].widgetOrder
             widgets[currentIndex].widgetOrder = widgets[currentIndex + 1].widgetOrder
-            if (currentIndex != 0)
-                widgets[currentIndex + 1].widgetOrder = currentOrder
-            else
-                widgets[currentIndex + 1].widgetOrder = 0
+            widgets[currentIndex + 1].widgetOrder = currentOrder
         }
         widgets = widgets.filter(w => w.id != widget.id)
         widgets.push(widget)
@@ -74,14 +69,14 @@ const propertyToDispatchMapper = dispatch => ({
                     type: 'DELETE_WIDGET',
                     widgets: widgets
                 })),
-    createWidget: (widgets, widgetListLength) => {
+    createWidget: (widgets, widgetMaxOrder) => {
         widgetService
             .createWidget({
-                id: (new Date()).getTime(),
                 name: 'New Widget',
                 type: 'HEADING',
                 text: 'New Widget',
-                size: '1'
+                size: '1',
+                widgetOrder: widgetMaxOrder+1
             })
             .then(widgets =>
                 dispatch({

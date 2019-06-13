@@ -10,7 +10,7 @@ export default class WidgetService {
     }
 
     saveAllWidgets = (widgets) =>
-        fetch(`localhost/api/widgets`, {
+        fetch("http://localhost:8080/api/widgets", {
             method: 'PUT',
             body: JSON.stringify(widgets),
             headers: {

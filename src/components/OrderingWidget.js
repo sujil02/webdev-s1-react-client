@@ -1,16 +1,16 @@
 import React from 'react'
 import {If, Else} from 'react-if'
 
-const orderingWidget = ({widget, changeWidgetOrder, changeWidget, deleteWidget}) =>
+const orderingWidget = ({widget, changeWidgetOrder, maxWidgetOrder,changeWidget, deleteWidget}) =>
     <div>
-        <If condition={widget.widgetOrder != 0}>
+        <If condition={widget.widgetOrder != 1}>
             <button className="btn btn-warning" onClick={
                 () => changeWidgetOrder(widget, 'INC')
             }>
                 <i className="fa fa-arrow-up"></i>
             </button>
         </If>
-        <If condition={widget.widgetOrder != 100000}>
+        <If condition={widget.widgetOrder != maxWidgetOrder}>
         <button className="btn btn-warning" onClick={
             () => changeWidgetOrder(widget, 'DEC')
         }>

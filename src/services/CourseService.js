@@ -21,9 +21,9 @@ export default class CourseService {
     findCourseById = (courseID) =>
         fetch(`http://localhost:8080/api/courses/${courseID}`)
             .then(response => response.json())
-    // findAllCourses = () => {
-    //     return this.courses;
-    // }
+    findAllModules = (courseId) =>
+        fetch(`http://localhost:8080/api/courses/${courseId}/modules`)
+            .then(response => response.json())
 
     findLesson = (courseId, moduleId, lessonId) => {
         let index1
@@ -57,19 +57,27 @@ export default class CourseService {
             .then(response => response.json())
     }
     addModule = (courseId, module) => {
-        let index1
-        let course
-        this.courses.forEach(function (c, index) {
-            if (c.id == courseId) {
-                index1 = index
-                course = c
+        // let index1
+        // let course
+        // this.courses.forEach(function (c, index) {
+        //     if (c.id == courseId) {
+        //         index1 = index
+        //         course = c
+        //     }
+        // })
+        // const myArrayString = JSON.stringify(course.modules)
+        // let m = JSON.parse(myArrayString)
+        // m.push(module)
+        // this.courses[index1].modules = m;
+        // return m;
+        return fetch(`http://localhost:8080/api/courses/${courseId}/modules`, {
+            method: 'POST',
+            body: JSON.stringify(module),
+            headers: {
+                'content-type': 'application/json'
             }
         })
-        const myArrayString = JSON.stringify(course.modules)
-        let m = JSON.parse(myArrayString)
-        m.push(module)
-        this.courses[index1].modules = m;
-        return m;
+            .then(response => response.json())
     }
     addLesson = (courseId, moduleId, lesson) => {
         let courseIndex
@@ -134,18 +142,10 @@ export default class CourseService {
     }
 
     deleteModule = (courseId, moduleId) => {
-        let index1
-        let course
-        this.courses.forEach(function (c, index) {
-            if (c.id == courseId) {
-                index1 = index
-                course = c
-            }
+        return fetch(`http://localhost:8080/api/courses/${courseId}/modules/${moduleId}`, {
+            method: 'DELETE'
         })
-
-        let modules = course.modules.filter(module => module.id !== moduleId)
-        course.modules = modules
-        return modules
+            .then(response => response.json())
     }
     deleteLesson = (courseId, moduleId, lessonId, lesson) => {
         let index1

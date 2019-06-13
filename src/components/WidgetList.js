@@ -26,10 +26,20 @@ class WidgetList extends React.Component {
     changeWidget = (widget) => {
         this.props.changeWidget(this.props.widgets, widget)
     }
+    findMaxWidgetOrder = (widgets) => {
+        let maxWidgetOrder =0
+        widgets.forEach(function (c, index) {
+            if (c.widgetOrder > maxWidgetOrder) {
+                maxWidgetOrder = c.widgetOrder
+            }
+        })
+        return maxWidgetOrder
+    }
 
     render() {
         return (
             <div style={{'padding': '10px'}}>
+                {/*{this.findMaxWidgetOrder(this.props.widgets)}*/}
                 <h1>Widget List {this.props.widgets.length}
                     <div className="float-right">
                         <button className="btn btn-success"
@@ -59,6 +69,7 @@ class WidgetList extends React.Component {
                     changeWidgetOrder={this.changeWidgetOrder}
                     widgets={this.props.widgets}
                     editMode={this.state.editing}
+                    maxWidgetOrder = {this.findMaxWidgetOrder(this.props.widgets)}
                     createWidget={this.props.createWidget}
                     deleteWidget={this.props.deleteWidget}
                 />

@@ -6,7 +6,7 @@ import ListWidget from "./ListWidget";
 import ImageWidget from "./ImageWidget";
 import LinkWidget from "./LinkWidget";
 
-const WidgetListComponent = ({widgets, createWidget, changeWidget, changeWidgetOrder, updateWidget, deleteWidget, editMode}) =>
+const WidgetListComponent = ({widgets, createWidget, maxWidgetOrder,changeWidget, changeWidgetOrder, updateWidget, deleteWidget, editMode}) =>
     <div>
         {
         widgets.map(
@@ -18,6 +18,7 @@ const WidgetListComponent = ({widgets, createWidget, changeWidget, changeWidgetO
                             updateWidget={updateWidget}
                             changeWidget={changeWidget}
                             changeWidgetOrder={changeWidgetOrder}
+                            maxWidgetOrder={maxWidgetOrder}
                             widget={widget}
                             editMode={editMode}
                             deleteWidget={deleteWidget}/>
@@ -68,8 +69,7 @@ const WidgetListComponent = ({widgets, createWidget, changeWidget, changeWidgetO
         <div className="row justify-content-end">
             <button className="btn btn-danger" onClick={
                 () => {
-                    var last_element = widgets[widgets.length - 1];
-                    createWidget(widgets,last_element.widgetOrder)
+                    createWidget(widgets,maxWidgetOrder)
                 }
             }>
                 <i className="fa fa-plus-circle"></i>

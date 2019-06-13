@@ -21,7 +21,7 @@ const getHeading = (widget) =>
     }
 
 }
-const HeadingWidget = ({widget, changeWidget, changeWidgetOrder, deleteWidget, editMode}) =>
+const HeadingWidget = ({widget, changeWidget, maxWidgetOrder,changeWidgetOrder, deleteWidget, editMode}) =>
     <div>
         <div className="card widgetCss">
             <If condition={editMode}>
@@ -32,6 +32,7 @@ const HeadingWidget = ({widget, changeWidget, changeWidgetOrder, deleteWidget, e
                                 widget={widget}
                                 changeWidgetOrder={changeWidgetOrder}
                                 changeWidget={changeWidget}
+                                maxWidgetOrder={maxWidgetOrder}
                                 editMode={editMode}
                                 deleteWidget={deleteWidget}
                             />
