@@ -2,7 +2,7 @@ import React from 'react'
 import {If} from "react-if";
 import OrderingWidget from "./OrderingWidget";
 
-const ParagraphWidget = ({widget, changeWidget, changeWidgetOrder, deleteWidget, editMode}) =>
+const ParagraphWidget = ({widget, changeWidget, maxWidgetOrder,changeWidgetOrder, deleteWidget, editMode}) =>
     <div className="card widgetCss">
         <If condition={editMode}>
             <div>
@@ -13,7 +13,9 @@ const ParagraphWidget = ({widget, changeWidget, changeWidgetOrder, deleteWidget,
                             changeWidgetOrder={changeWidgetOrder}
                             changeWidget={changeWidget}
                             editMode={editMode}
+                            maxWidgetOrder={maxWidgetOrder}
                             deleteWidget={deleteWidget}
+                            maxWidgetOrder={maxWidgetOrder}
                         />
                     </div>
                     <h3>Paragraph Widget</h3>

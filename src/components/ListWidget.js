@@ -2,7 +2,7 @@ import React from 'react'
 import {If} from "react-if";
 import OrderingWidget from "./OrderingWidget";
 
-const ListWidget = ({widget, changeWidget, changeWidgetOrder, deleteWidget, editMode}) =>
+const ListWidget = ({widget, changeWidget,maxWidgetOrder, changeWidgetOrder, deleteWidget, editMode}) =>
     <div>
         <div className="card widgetCss">
             <If condition={editMode}>
@@ -15,6 +15,7 @@ const ListWidget = ({widget, changeWidget, changeWidgetOrder, deleteWidget, edit
                                 editMode={editMode}
                                 changeWidget={changeWidget}
                                 deleteWidget={deleteWidget}
+                                maxWidgetOrder={maxWidgetOrder}
                             />
                         </div>
                         <h3>List Widget</h3>
@@ -35,11 +36,11 @@ const ListWidget = ({widget, changeWidget, changeWidgetOrder, deleteWidget, edit
                             <select className="form-control"
                                     onChange={(event) => changeWidget(
                                         widget = ({
-                                            ...widget, cssClass: event.target.value
+                                            ...widget, choice: event.target.value
                                         })
                                     )}>
-                                <option value="UNORDERED">Unordered list</option>
-                                <option value="ORDERED">Ordered list</option>
+                                <option value="1">Unordered list</option>
+                                <option value="2">Ordered list</option>
                             </select>
                         </div>
                         <div className="form-group">
@@ -66,8 +67,8 @@ export default ListWidget
 
 const getList = (widget) => {
     var arrayText = widget.text.split("\n");
-    switch (widget.cssClass) {
-        case "UNORDERED":
+    switch (widget.choice) {
+        case 1:
             return (
                 <ul>
                     {arrayText
@@ -78,7 +79,7 @@ const getList = (widget) => {
                         })}
                 </ul>)
         break
-        case "ORDERED":
+        case 2:
             return (
                 <ol>
                     {arrayText

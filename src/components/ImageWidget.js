@@ -2,7 +2,7 @@ import React from 'react'
 import {If} from "react-if";
 import OrderingWidget from "./OrderingWidget";
 
-const imageWidget = ({widget, changeWidget, changeWidgetOrder, deleteWidget, editMode}) =>
+const imageWidget = ({widget, changeWidget, maxWidgetOrder,changeWidgetOrder, deleteWidget, editMode}) =>
     <div className="card widgetCss">
         <If condition={editMode}>
             <div>
@@ -13,6 +13,7 @@ const imageWidget = ({widget, changeWidget, changeWidgetOrder, deleteWidget, edi
                             changeWidgetOrder={changeWidgetOrder}
                             editMode={editMode}
                             changeWidget={changeWidget}
+                            maxWidgetOrder={maxWidgetOrder}
                             deleteWidget={deleteWidget}
                         />
                     </div>
@@ -25,7 +26,7 @@ const imageWidget = ({widget, changeWidget, changeWidgetOrder, deleteWidget, edi
                                defaultValue={widget.srcUrl}
                                onChange={(event) => changeWidget(
                                    widget = ({
-                                       ...widget, srcUrl: event.target.value
+                                       ...widget, src: event.target.value
                                    })
                                )}
                         />
@@ -46,6 +47,6 @@ const imageWidget = ({widget, changeWidget, changeWidgetOrder, deleteWidget, edi
 
             </div>
         </If>
-        <img src={widget.srcUrl} width={500}/>
+        <img src={widget.src} width={500}/>
     </div>
 export default imageWidget

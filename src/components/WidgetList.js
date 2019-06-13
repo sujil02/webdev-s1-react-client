@@ -1,10 +1,5 @@
 import React from 'react'
-import HeadingWidget from "./HeadingWidget";
 import {Switch, Case, If, Else} from 'react-if'
-import ParagraphWidget from "./ParagraphWidget";
-import ListWidget from "./ListWidget";
-import ImageWidget from "./ImageWidget";
-import LinkWidget from "./LinkWidget";
 import WidgetListComponent from "./WidgetListComponent";
 
 class WidgetList extends React.Component {

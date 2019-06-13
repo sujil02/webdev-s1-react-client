@@ -1,6 +1,6 @@
 import React from 'react'
-import HeadingWidget from "./HeadingWidget";
 import {Switch, Case, If, Else} from 'react-if'
+import HeadingWidget from "./HeadingWidget"
 import ParagraphWidget from "./ParagraphWidget";
 import ListWidget from "./ListWidget";
 import ImageWidget from "./ImageWidget";
@@ -29,6 +29,7 @@ const WidgetListComponent = ({widgets, createWidget, maxWidgetOrder,changeWidget
                             updateWidget={updateWidget}
                             changeWidget={changeWidget}
                             changeWidgetOrder={changeWidgetOrder}
+                            maxWidgetOrder={maxWidgetOrder}
                             widget={widget}
                             editMode={editMode}
                             deleteWidget={deleteWidget}/>
@@ -39,6 +40,7 @@ const WidgetListComponent = ({widgets, createWidget, maxWidgetOrder,changeWidget
                             updateWidget={updateWidget}
                             changeWidget={changeWidget}
                             changeWidgetOrder={changeWidgetOrder}
+                            maxWidgetOrder={maxWidgetOrder}
                             widget={widget}
                             editMode={editMode}
                             deleteWidget={deleteWidget}/>
@@ -49,6 +51,7 @@ const WidgetListComponent = ({widgets, createWidget, maxWidgetOrder,changeWidget
                             updateWidget={updateWidget}
                             changeWidget={changeWidget}
                             changeWidgetOrder={changeWidgetOrder}
+                            maxWidgetOrder={maxWidgetOrder}
                             widget={widget}
                             editMode={editMode}
                             deleteWidget={deleteWidget}/>
@@ -59,6 +62,7 @@ const WidgetListComponent = ({widgets, createWidget, maxWidgetOrder,changeWidget
                             updateWidget={updateWidget}
                             changeWidget={changeWidget}
                             changeWidgetOrder={changeWidgetOrder}
+                            maxWidgetOrder={maxWidgetOrder}
                             widget={widget}
                             editMode={editMode}
                             deleteWidget={deleteWidget}/>

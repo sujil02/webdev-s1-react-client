@@ -2,7 +2,7 @@ import React from 'react'
 import {If} from "react-if";
 import OrderingWidget from "./OrderingWidget";
 
-const linkWidget = ({widget, changeWidget, changeWidgetOrder, deleteWidget, editMode}) =>
+const linkWidget = ({widget, changeWidget, maxWidgetOrder, changeWidgetOrder, deleteWidget, editMode}) =>
     <div>
         <div className="card widgetCss">
             <If condition={editMode}>
@@ -14,6 +14,7 @@ const linkWidget = ({widget, changeWidget, changeWidgetOrder, deleteWidget, edit
                         changeWidgetOrder={changeWidgetOrder}
                         changeWidget={changeWidget}
                         editMode={editMode}
+                        maxWidgetOrder={maxWidgetOrder}
                         deleteWidget={deleteWidget}
                     /></div>
                     <h3>Link Widget</h3>
