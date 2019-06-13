@@ -47,7 +47,7 @@ export default class CourseService {
         // m.push(course)
         // this.courses = m;
         // return m;
-        return fetch("http://localhost:8080/api/course", {
+        return fetch("http://localhost:8080/api/courses", {
             method: 'POST',
             body: JSON.stringify(course),
             headers: {
@@ -126,8 +126,11 @@ export default class CourseService {
     /*
         Following are the add methods used to edit the course object.
     */
-    deleteCourse = (courses) => {
-        this.courses = courses
+    deleteCourse = (courseId) => {
+        return fetch(`http://localhost:8080/api/courses/${courseId}`, {
+            method: 'DELETE'
+        })
+            .then(response => response.json())
     }
 
     deleteModule = (courseId, moduleId) => {
@@ -143,9 +146,6 @@ export default class CourseService {
         let modules = course.modules.filter(module => module.id !== moduleId)
         course.modules = modules
         return modules
-    }
-    deleteCourse = (courses) => {
-        this.courses = courses
     }
     deleteLesson = (courseId, moduleId, lessonId, lesson) => {
         let index1
@@ -177,17 +177,25 @@ export default class CourseService {
     /*
         Following are the update methods used to alter the course object.
     */
-    updateCourse = (courseId, title) => {
-        let index1
-        let course
-        this.courses.forEach(function (c, index) {
-            if (c.id == courseId) {
-                index1 = index
-                course = c
+    updateCourse = (courseId, course) => {
+        // let index1
+        // let course
+        // this.courses.forEach(function (c, index) {
+        //     if (c.id == courseId) {
+        //         index1 = index
+        //         course = c
+        //     }
+        // })
+        // course.title = title
+        // return courses;
+        return fetch(`http://localhost:8080/api/courses/${courseId}`, {
+            method: 'PUT',
+            body: JSON.stringify(course),
+            headers: {
+                'content-type': 'application/json'
             }
         })
-        course.title = title
-        return courses;
+            .then(response => response.json())
     }
 
     updateModule = (courseId, moduleId, title) => {

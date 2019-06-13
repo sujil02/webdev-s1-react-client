@@ -15,7 +15,7 @@ export default class CourseGrid
                 title: 'New Course',
                 modules: []
             },
-            courses : props.courses
+            courses: []
         }
     }
     titleChanged = (event) => {
@@ -29,17 +29,29 @@ export default class CourseGrid
         })
     }
     createCourse = () => {
-        this.state.course.id = (new Date()).getTime()
-        this.setState({
-            courses: [this.state.course, ...this.state.courses]
-        })
-        courseService.addCourse(this.state.course)
+        courseService.addCourse(this.state.course).then(result => this.setState({
+            courses: result
+        }))
     }
-    deleteCourse = (id) => {
-        this.setState({
-            courses: this.state.courses.filter(course => course.id !== id)
-        })
-        courseService.deleteCourse(this.state.courses.filter(course => course.id !== id))
+    deleteCourse = (course) => {
+        courseService.deleteCourse(course.id).then(result => this.setState({
+            courses: result
+        }))
+    }
+    updateCourse = (course) => {
+        course.title = window.prompt("Please enter new course title")
+        courseService.updateCourse(course.id, course).then(result => this.setState({
+            courses: result
+        }))
+    }
+
+    componentWillMount() {
+        const pathname = window.location.pathname
+        const paths = pathname.split('/')
+        courseService.findAllCourses().then(result => this.setState({
+            courses: result,
+            moduleId: paths[1]
+        }))
     }
     render() {
         return(
