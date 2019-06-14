@@ -108,7 +108,8 @@ export default class TopicPills extends React.Component {
         if(this.state.widgetId){
             return (
                 <div className="widgetTabCss">
-                <WidgetListContainer/>
+                <WidgetListContainer
+                topicId={this.state.topicId}/>
                 </div>
             )
         }

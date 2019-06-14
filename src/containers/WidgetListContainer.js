@@ -9,12 +9,13 @@ const stateToPropertyMapper = state => ({
     widgets: state.widgets
 })
 
-const propertyToDispatchMapper = dispatch => ({
+const propertyToDispatchMapper = (dispatch, ownProps) => ({
 
     saveAllWidgets: widgets => {
         Array.from(widgets)
         widgetService
-            .saveAllWidgets(widgets)
+            .saveAllWidgets(widgets,
+                ownProps.topicId)
             .then(widgets =>
                 dispatch({
                     type: 'SAVE_ALL_WIDGETS',
@@ -72,12 +73,13 @@ const propertyToDispatchMapper = dispatch => ({
     createWidget: (widgets, widgetMaxOrder) => {
         widgetService
             .createWidget({
-                name: 'New Widget',
-                type: 'HEADING',
-                text: 'New Widget',
-                size: '1',
-                widgetOrder: widgetMaxOrder+1
-            })
+                    name: 'New Widget',
+                    type: 'HEADING',
+                    text: 'New Widget',
+                    size: '1',
+                    widgetOrder: widgetMaxOrder + 1
+                },
+                ownProps.topicId)
             .then(widgets =>
                 dispatch({
                     type: 'CREATE_WIDGET',
@@ -86,7 +88,7 @@ const propertyToDispatchMapper = dispatch => ({
     },
     findAllWidgets: () =>
         widgetService
-            .findAllWidgets()
+            .findAllWidgets(ownProps.topicId)
             .then(widgets =>
                 dispatch({
                     type: 'FIND_ALL_WIDGETS',

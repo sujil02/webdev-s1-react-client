@@ -5,7 +5,7 @@ import WidgetListComponent from "./WidgetListComponent";
 class WidgetList extends React.Component {
     constructor(props) {
         super(props)
-        this.props.findAllWidgets()
+        this.props.findAllWidgets(this.props.topicId)
     }
 
     state = {
@@ -29,6 +29,13 @@ class WidgetList extends React.Component {
             }
         })
         return maxWidgetOrder
+    }
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if(prevProps.topicId!==undefined && this.props.topicId!==undefined){
+            if(prevProps.topicId !== this.props.topicId) {
+                this.props.findAllWidgets();
+            }
+        }
     }
 
     render() {

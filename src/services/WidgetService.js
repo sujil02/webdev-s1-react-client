@@ -9,8 +9,8 @@ export default class WidgetService {
         return this.myInstance;
     }
 
-    saveAllWidgets = (widgets) =>
-        fetch("http://localhost:8080/api/widgets", {
+    saveAllWidgets = (widgets,topicId) =>
+        fetch(`https://webdev-s1-sujil-server-java.herokuapp.com/api/topic/${topicId}/widgets`, {
             method: 'PUT',
             body: JSON.stringify(widgets),
             headers: {
@@ -19,8 +19,8 @@ export default class WidgetService {
         })
             .then(response => response.json())
 
-    createWidget = widget =>
-        fetch("http://localhost:8080/api/widgets", {
+    createWidget = (widget,topicId) =>
+        fetch(`https://webdev-s1-sujil-server-java.herokuapp.com/api/topic/${topicId}/widgets`, {
             method: 'POST',
             body: JSON.stringify(widget),
             headers: {
@@ -29,21 +29,21 @@ export default class WidgetService {
         })
             .then(response => response.json())
 
-    findAllWidgets = () =>
-        fetch("http://localhost:8080/api/widgets")
+    findAllWidgets = (topicId) =>
+        fetch(`https://webdev-s1-sujil-server-java.herokuapp.com/api/topic/${topicId}/widgets/`)
             .then(response => response.json())
 
     findWidgetById = widgetId => {
         return this.findAllWidgets.find(widget => widget.id == widgetId)
     }
     deleteWidget = widgetId =>
-        fetch(`http://localhost:8080/api/widgets/${widgetId}`, {
+        fetch(`https://webdev-s1-sujil-server-java.herokuapp.com/api/widgets/${widgetId}`, {
             method: 'DELETE'
         })
             .then(response => response.json())
 
     updateWidget = (newWidget) =>
-        fetch(`http://localhost:8080/api/widgets/${newWidget.id}`, {
+        fetch(`https://webdev-s1-sujil-server-java.herokuapp.com/api/widgets/${newWidget.id}`, {
             method: 'PUT',
             body: JSON.stringify(newWidget),
             headers: {
