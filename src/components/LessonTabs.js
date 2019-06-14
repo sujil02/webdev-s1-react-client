@@ -26,11 +26,11 @@ export default class LessonTabs extends React.Component {
         }
     }
     createLesson = () => {
-        // this.state.module.push()
-        this.state.lesson.id = (new Date()).getTime()
-        this.setState({
-            lessons:  courseService.addLesson(this.props.courseId, this.props.moduleId, this.state.lesson)
-        })
+        // // this.state.module.push()
+        // this.state.lesson.id = (new Date()).getTime()
+        // this.setState({
+        //     lessons:  courseService.addLesson(this.props.courseId, this.props.moduleId, this.state.lesson)
+        // })
 
     }
     findLesson = (moduleId, lessonId) => {
@@ -61,15 +61,15 @@ export default class LessonTabs extends React.Component {
         })
     }
     deleteLesson = (courseId,moduleId,id) => {
-        this.setState({
-            lessons: this.state.modules.lessons.filter(lesson => lesson.id !== id)
-        })
-        courseService.deleteLesson(courseId,moduleId,id,  this.state.modules.lessons.filter(lesson => lesson.id !== id))
+        // this.setState({
+        //     lessons: this.state.modules.lessons.filter(lesson => lesson.id !== id)
+        // })
+        // courseService.deleteLesson(courseId,moduleId,id,  this.state.modules.lessons.filter(lesson => lesson.id !== id))
     }
     updateLesson = (courseId,moduleId,id) => {
-        this.setState({
-            lessons: courseService.updateLesson(courseId,moduleId,id,  window.prompt("Please enter new lesson title"))
-        })
+        // this.setState({
+        //     lessons: courseService.updateLesson(courseId,moduleId,id,  window.prompt("Please enter new lesson title"))
+        // })
     }
     render() {
         return(

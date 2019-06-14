@@ -29,10 +29,10 @@ export default class TopicPills extends React.Component {
     }
     createTopic = () => {
         // this.state.module.push()
-        this.state.topic.id = (new Date()).getTime()
-        this.setState({
-            topics:  courseService.addTopic(this.props.courseId, this.props.moduleId, this.state.lessonId,this.state.topic)
-        })
+        // this.state.topic.id = (new Date()).getTime()
+        // this.setState({
+        //     topics:  courseService.addTopic(this.props.courseId, this.props.moduleId, this.state.lessonId,this.state.topic)
+        // })
 
     }
     titleChanged = (event) => {
@@ -49,17 +49,17 @@ export default class TopicPills extends React.Component {
         return lesson;
     }
     deleteTopic = (courseId, moduleId, lessonId,topicId) => {
-        this.setState({
-            topics: this.state.lesson.topics.filter(topic => topic.id !== topicId)
-        })
-        courseService.deleteTopic(courseId,moduleId,lessonId,
-            this.state.lesson.topics.filter(topics => topics.id != topicId))
+        // this.setState({
+        //     topics: this.state.lesson.topics.filter(topic => topic.id !== topicId)
+        // })
+        // courseService.deleteTopic(courseId,moduleId,lessonId,
+        //     this.state.lesson.topics.filter(topics => topics.id != topicId))
     }
     updateTopic = (courseId, moduleId, lessonId,topicId) => {
-        this.setState({
-            topics: courseService.updateTopic(courseId,moduleId,lessonId, topicId,
-                window.prompt("Please enter new topic title"))
-        })
+        // this.setState({
+        //     topics: courseService.updateTopic(courseId,moduleId,lessonId, topicId,
+        //         window.prompt("Please enter new topic title"))
+        // })
     }
     componentUpdate =()=> {
         const pathname = window.location.pathname
